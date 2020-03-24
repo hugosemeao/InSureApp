@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainMenuActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="98dp"
+        android:layout_height="84dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="9dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/WelcometextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="@string/welcome"
+            app:layout_constraintBottom_toTopOf="@+id/SelectTextView"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="118dp" />
+
+        <TextView
+            android:id="@+id/SelectTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:text="@string/select"
+            app:layout_constraintBottom_toTopOf="@+id/ClaimHistoryButton"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="84dp" />
+
+        <Button
+            android:id="@+id/CustomerInformationButton"
+            android:layout_width="270dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginBottom="230dp"
+            android:text="@string/customerInfo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/newCalimButton"
+            android:layout_width="270dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginBottom="50dp"
+            android:text="@string/newClaim"
+            app:layout_constraintBottom_toTopOf="@+id/CustomerInformationButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/ClaimHistoryButton"
+            android:layout_width="270dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginBottom="50dp"
+            android:text="@string/claimHistory"
+            app:layout_constraintBottom_toTopOf="@+id/newCalimButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/LogOutButton"
+            android:layout_width="111dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/logOut"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">InSureApp</string>
+    <string name="welcome">Welcome to the InSure app!</string>
+    <string name="select">Select the option you want to perform:</string>
+    <string name="customerInfo">Customer Information</string>
+    <string name="newClaim">New claim</string>
+    <string name="claimHistory">Claim history</string>
+    <string name="logOut">Log Out</string>
+</resources>
