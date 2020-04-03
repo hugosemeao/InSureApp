@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.insureapp;
+package pt.ulisboa.tecnico.sise.insureapp.serverCalls;
 
 import android.util.Log;
 

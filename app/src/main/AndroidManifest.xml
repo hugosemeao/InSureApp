@@ -12,18 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ClaimDescriptionActivity"></activity>
-        <activity android:name=".MainMenuActivity">
+        <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity >
+        <activity android:name=".ClaimDescriptionActivity" />
+        <activity android:name=".activities.MainMenuActivity" />
         <activity android:name=".CustomerInformationActivity" />
         <activity android:name=".CreateClaimActivity" />
         <activity android:name=".ClaimHistoryActivity" />
-        <activity android:name=".LoginActivity" />
     </application>
 
 </manifest>
