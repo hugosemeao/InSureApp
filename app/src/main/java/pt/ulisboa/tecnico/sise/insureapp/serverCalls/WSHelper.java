@@ -23,7 +23,7 @@ import pt.ulisboa.tecnico.sise.insureapp.datamodel.Person;
 public class WSHelper {
     private static final String TAG = "WSHelper";
     private static final String NAMESPACE = "http://pt.ulisboa.tecnico.sise.insure.ws/";
-    private static final String URL = "http://10.2.2:8080/InSureWS?WSDL";
+    private static final String URL = "http://10.0.2.2:8080/InSureWS?WSDL";
     private static final String serviceName = "InsureWS";
     private static int TIMEOUT = 4000;
 

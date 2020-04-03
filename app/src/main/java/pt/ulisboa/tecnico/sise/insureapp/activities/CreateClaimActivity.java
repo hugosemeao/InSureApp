@@ -13,7 +13,6 @@ import android.widget.Toast;
 import java.util.Calendar;
 import pt.ulisboa.tecnico.sise.insureapp.R;
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
-import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSSubmitNewClaimTask;
 
 public class CreateClaimActivity extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
@@ -43,7 +42,7 @@ public class CreateClaimActivity extends AppCompatActivity {
         // initiate the date picker and a button
         // perform click event on edit text
 
-        Claimdate.setOnClickListener(new View.OnClickListener() {
+ /*       Claimdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // calender class's instance and get current date , month and year from calender
@@ -112,7 +111,7 @@ public class CreateClaimActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainMenuActivity.this, CreateClaimActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
 }

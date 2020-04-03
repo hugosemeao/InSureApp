@@ -26,12 +26,12 @@ public class ListClientClaimsTask extends AsyncTask<Integer,String,List<ClaimIte
         return null;
     }
 
-    @Override
+/*    @Override
     protected void onPostExecute(List<ClaimItem> result) {
         ArrayAdapter<ClaimItem> adapter = new ArrayAdapter<>(ClaimHistoryActivity,
                 android.R.layout.simple_list_item_1, android.R.id.text1, result);
         listView.setAdapter(adapter);
 
 
-    }
+    }*/
 }

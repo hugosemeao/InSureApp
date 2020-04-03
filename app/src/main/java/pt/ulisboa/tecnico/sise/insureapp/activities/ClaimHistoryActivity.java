@@ -25,7 +25,7 @@ public class ClaimHistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_claim_history);
-        _listView = (ListView) findViewById(R.id.list_claims_list);
+        /*_listView = (ListView) findViewById(R.id.list_claims_list);
 
         //place the claim list in the application domain
         _claimList= new ListClientClaimsTask.execute(sessionID,_listView);
@@ -42,7 +42,7 @@ public class ClaimHistoryActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // create the read note activity, passing to it the index position as parameter
                 Log.d("position", position+"");
-
+*/
 
 
     }

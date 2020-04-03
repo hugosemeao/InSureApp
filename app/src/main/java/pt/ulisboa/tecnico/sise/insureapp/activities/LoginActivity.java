@@ -1,15 +1,22 @@
 package pt.ulisboa.tecnico.sise.insureapp.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
+import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.R;
+import pt.ulisboa.tecnico.sise.insureapp.serverCalls.LoginCallTask;
 
 public class LoginActivity extends AppCompatActivity {
+    String username, password;
+    final String TAG = "loginActivity";
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +27,17 @@ public class LoginActivity extends AppCompatActivity {
         final Button button = findViewById(R.id.loginButton);
         button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Log.d("login", "Button clicked");
-                Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
-                //TODO extra with the client name and stuff ?? intent.putExtra(InternalProtocol.READ_NOTE_INDEX, position);
-                //switches to MainMenuActivity
-                startActivity(intent);
+                Log.d(TAG, "Button clicked");
+                /*gets the inserted values by the user
+                *we place this here assuming that the user will only click on the button
+                *after filling the username and password*/
+                EditText name  = findViewById(R.id.username);
+                EditText pass = findViewById(R.id.loginPassword);
+                username = name.getText().toString();
+                password = pass.getText().toString();
+                Log.d(TAG, "user: "+ username + "  password: " + password);
+                GlobalState globalState = (GlobalState) getApplicationContext();
+                new LoginCallTask(context, globalState).execute(username, password);
             }
         });
     }

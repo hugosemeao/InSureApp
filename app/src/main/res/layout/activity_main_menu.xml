@@ -41,7 +41,7 @@
             android:text="@string/select"
             android:textColor="#4757AA"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/ClaimHistoryButton"
+            app:layout_constraintBottom_toTopOf="@+id/claimHistoryButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/CustomerInformationButton"
+            android:id="@+id/customerInformationButton"
             android:layout_width="270dp"
             android:layout_height="50dp"
             android:backgroundTint="#B2D1CA"
@@ -68,7 +68,7 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/newCalimButton"
+            android:id="@+id/newClaimButton"
             android:layout_width="270dp"
             android:layout_height="50dp"
             android:backgroundTint="#B2D1CA"
@@ -76,7 +76,7 @@
             android:text="@string/newClaim"
             android:textColor="#4757AA"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/CustomerInformationButton"
+            app:layout_constraintBottom_toTopOf="@+id/customerInformationButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.524"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,7 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/ClaimHistoryButton"
+            android:id="@+id/claimHistoryButton"
             android:layout_width="270dp"
             android:layout_height="50dp"
             android:backgroundTint="#B2D1CA"
@@ -93,7 +93,7 @@
             android:text="@string/claimHistory"
             android:textColor="#4757AA"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/newCalimButton"
+            app:layout_constraintBottom_toTopOf="@+id/newClaimButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.524"
             app:layout_constraintStart_toStartOf="parent"
