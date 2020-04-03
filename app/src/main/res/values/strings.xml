@@ -13,7 +13,7 @@
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in">Sign in </string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
@@ -32,6 +32,7 @@
     <string name="date_of_birth">Date of birth</string>
     <string name="insurance_policy_number">Insurance Policy Number</string>
     <string name="adress">Adress</string>
+    <string name="ok"> OK </string>
     />
 
 </resources>
