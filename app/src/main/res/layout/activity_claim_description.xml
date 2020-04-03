@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ClaimDescriptionActivity"
-    android:background="@drawable/one">
+    tools:context=".activities.ClaimDescriptionActivity"
+    android:background="@drawable/four">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -23,10 +23,11 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/claim_details_intro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Claim Description"
+            android:textColor="#4757AA"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -35,18 +36,20 @@
             app:layout_constraintVertical_bias="0.106" />
 
         <Button
-            android:id="@+id/OkButton"
+            android:id="@+id/Back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="430dp"
             android:background="#FFFFFF"
+            android:backgroundTint="#B9F6CA"
             android:fontFamily="sans-serif-condensed-light"
             android:scrollbarTrackHorizontal="@android:drawable/btn_dropdown"
             android:text="@string/Back"
+            android:textColor="#215A31"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/claim_details_intro" />
 
         <TextView
             android:id="@+id/textView7"
@@ -54,7 +57,8 @@
             android:layout_height="352dp"
             android:background="#FFFFFF"
             android:text="@string/Back"
-            app:layout_constraintBottom_toBottomOf="@+id/OkButton"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

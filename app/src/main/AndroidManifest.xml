@@ -18,11 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity >
-        <activity android:name=".ClaimDescriptionActivity" />
+        <activity android:name=".activities.ClaimDescriptionActivity" />
         <activity android:name=".activities.MainMenuActivity" />
-        <activity android:name=".CustomerInformationActivity" />
-        <activity android:name=".CreateClaimActivity" />
-        <activity android:name=".ClaimHistoryActivity" />
+        <activity android:name=".activities.CustomerInformationActivity" />
+        <activity android:name=".activities.CreateClaimActivity" />
+        <activity android:name=".activities.ClaimHistoryActivity" />
     </application>
 
 </manifest>

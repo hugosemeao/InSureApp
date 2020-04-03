@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CreateClaimActivity"
-    android:background="@drawable/one">
+    tools:context=".activities.CreateClaimActivity"
+    android:background="@drawable/four">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -22,7 +22,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/claim_details_intro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-light"
@@ -37,19 +37,20 @@
 
 
         <Button
-            android:id="@+id/OkButton"
+            android:id="@+id/Back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="430dp"
             android:background="#B9F6CA"
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/Back"
+            android:textColor="#215A31"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.219"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/claim_details_intro"
             app:layout_constraintVertical_bias="0.484"
             tools:ignore="MissingConstraints" />
 
@@ -62,76 +63,79 @@
             android:background="#FFE57F"
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/Submit"
+            android:textColor="#BA4825"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.662"
-            app:layout_constraintStart_toStartOf="@+id/OkButton"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/Back_button"
+            app:layout_constraintTop_toBottomOf="@+id/claim_details_intro"
             app:layout_constraintVertical_bias="0.484"
             tools:ignore="UnknownId" />
 
 
         <TextView
-            android:id="@+id/Title"
+            android:id="@+id/claim_title_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/title"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/OkButton"
+            app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/claim_details_intro"
             app:layout_constraintVertical_bias="0.089"
             tools:ignore="MissingConstraints" />
 
         <EditText
-            android:id="@+id/editText"
-            android:layout_width="319dp"
-            android:layout_height="35dp"
+            android:id="@+id/claim_title_value"
+            android:layout_width="321dp"
+            android:layout_height="38dp"
+            android:autofillHints=""
             android:ems="10"
+            android:hint="Enter a title to your claim"
             android:inputType="textShortMessage"
-            app:layout_constraintBottom_toTopOf="@+id/OkButton"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Title"
+            app:layout_constraintTop_toBottomOf="@+id/claim_title_title"
             app:layout_constraintVertical_bias="0.055"
-            android:autofillHints=""
             tools:ignore="MissingConstraints" />
 
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/car_plate_title"
             android:layout_width="138dp"
             android:layout_height="23dp"
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/car_s_plate_number"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/OkButton"
+            app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.51"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Title"
+            app:layout_constraintTop_toBottomOf="@+id/claim_title_title"
             app:layout_constraintVertical_bias="0.247"
             tools:ignore="MissingConstraints" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/license_plate"
             android:layout_width="324dp"
             android:layout_height="25dp"
             app:layout_constraintBottom_toTopOf="@+id/submitButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
+            app:layout_constraintTop_toBottomOf="@+id/claim_title_value"
             app:layout_constraintVertical_bias="0.227"
             tools:ignore="MissingConstraints" />
 
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/claim_describer_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-light"
@@ -139,29 +143,56 @@
             android:textAlignment="center"
             android:textSize="18sp"
             app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/OkButton"
+            app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            app:layout_constraintVertical_bias="0.315"
+            app:layout_constraintTop_toBottomOf="@+id/car_plate_title"
+            app:layout_constraintVertical_bias="0.622"
             tools:ignore="MissingConstraints" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/claim_description"
             android:layout_width="320dp"
-            android:layout_height="164dp"
+            android:layout_height="66dp"
             android:ems="10"
+            android:hint="Enter a description of the claim"
             android:importantForAutofill="no"
             android:inputType="textLongMessage"
             android:scrollbarStyle="insideInset"
             android:scrollbars="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/OkButton"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/claim_details_intro"
             app:layout_constraintVertical_bias="0.932"
             tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/date_of_ocurance_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-light"
+            android:text="Date of ocurence"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/claim_describer_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/car_plate_title"
+            app:layout_constraintVertical_bias="0.388" />
+
+        <EditText
+            android:id="@+id/date_claim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Insert a date"
+            android:inputType="date"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="103dp"
+            tools:layout_editor_absoluteY="351dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

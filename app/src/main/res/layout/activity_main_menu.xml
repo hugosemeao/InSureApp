@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activities.MainMenuActivity"
-    android:background="@drawable/one">
+    android:background="@drawable/four">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,6 +21,8 @@
             android:layout_marginBottom="28dp"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="@string/welcome"
+            android:textColor="#4757AA"
+            android:textColorHint="#000000"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/SelectTextView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,6 +39,7 @@
             android:layout_marginBottom="32dp"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="@string/select"
+            android:textColor="#4757AA"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/ClaimHistoryButton"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,6 +56,8 @@
             android:backgroundTint="#B2D1CA"
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/customerInfo"
+            android:textColor="#4757AA"
+            android:textColorHighlight="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +74,7 @@
             android:backgroundTint="#B2D1CA"
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/newClaim"
+            android:textColor="#4757AA"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/CustomerInformationButton"
             app:layout_constraintEnd_toEndOf="parent"
@@ -85,6 +91,7 @@
             android:backgroundTint="#B2D1CA"
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/claimHistory"
+            android:textColor="#4757AA"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/newCalimButton"
             app:layout_constraintEnd_toEndOf="parent"
@@ -98,8 +105,10 @@
             android:id="@+id/LogOutButton"
             android:layout_width="88dp"
             android:layout_height="43dp"
+            android:backgroundTint="#FF9E80"
             android:fontFamily="sans-serif-condensed-light"
             android:text="@string/logOut"
+            android:textColor="#7E2020"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

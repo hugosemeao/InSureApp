@@ -1,8 +1,10 @@
-package pt.ulisboa.tecnico.sise.insureapp;
+package pt.ulisboa.tecnico.sise.insureapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import pt.ulisboa.tecnico.sise.insureapp.R;
 
 public class ClaimDescriptionActivity extends AppCompatActivity {
 
