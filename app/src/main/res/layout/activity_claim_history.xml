@@ -29,31 +29,10 @@
             android:text="Claims List"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.129"
+            app:layout_constraintHorizontal_bias="0.083"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.105" />
-
-        <ScrollView
-            android:id="@+id/scrollView3"
-            android:layout_width="304dp"
-            android:layout_height="374dp"
-            android:animationCache="false"
-            android:background="#FFFFFF"
-            android:textAlignment="center"
-            android:textDirection="rtl"
-            app:layout_constraintBottom_toTopOf="@+id/OkButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.404">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"/>
-        </ScrollView>
+            app:layout_constraintVertical_bias="0.009" />
 
         <Button
             android:id="@+id/OkButton"
@@ -67,8 +46,20 @@
             android:textColor="#215A31"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.375" />
+
+        <ListView
+            android:id="@+id/claim_history_list"
+            android:layout_width="409dp"
+            android:layout_height="430dp"
+            app:layout_constraintBottom_toTopOf="@+id/OkButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.649" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

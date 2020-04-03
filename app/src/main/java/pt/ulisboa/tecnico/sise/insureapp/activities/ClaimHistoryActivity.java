@@ -7,43 +7,53 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import pt.ulisboa.tecnico.sise.insureapp.ClaimHistoryAdapter;
+import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.R;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
+import pt.ulisboa.tecnico.sise.insureapp.serverCalls.ListClientClaimsTask;
 
 public class ClaimHistoryActivity extends AppCompatActivity {
     public final static String TAG = "ClaimHistory";
     private List<ClaimItem> _claimList;
     private ListView _listView;
+    private GlobalState _globalState;
     public Integer sessionID=1;
+    private Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_claim_history);
-        /*_listView = (ListView) findViewById(R.id.list_claims_list);
 
-        //place the claim list in the application domain
-        _claimList= new ListClientClaimsTask.execute(sessionID,_listView);
+        //element on the UI
+        _listView = (ListView) findViewById(R.id.claim_history_list);
+        backButton=(Button) findViewById(R.id.OkButton);
 
-        //assign adapter to listView
-        ArrayAdapter<ClaimItem> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, _claimList);
-        _listView.setAdapter(adapter);
+        //Initialize claim adapter
+        ClaimHistoryAdapter claimHistoryAdapter = new ClaimHistoryAdapter(this, R.layout.item_claim_history, _claimList);
 
-        // attach click listener to list view items
-        _listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //Setup back button
+        backButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Log.d(TAG, "claimHistoryButton clicked");
+                Intent intent = new Intent(ClaimHistoryActivity.this, MainMenuActivity.class);
+                //switches to ClaimHistoryActivity
+                startActivity(intent);
+            }
+        });
+    }
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // create the read note activity, passing to it the index position as parameter
-                Log.d("position", position+"");
-*/
-
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        _globalState = (GlobalState) getApplicationContext();
+        new ListClientClaimsTask(this,_listView).execute(_globalState.getSessionId());
     }
 }
