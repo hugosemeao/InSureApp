@@ -18,7 +18,7 @@ import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSPlatesListSupport;
 import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSSubmitNewClaimTask;
 
 public class CreateClaimActivity extends AppCompatActivity {
-    private static final String TAG = "BackButton";
+    private static final String TAG = "createClaimActivity";
     private DatePickerDialog datePickerDialog;
     private EditText Claimtitle;
     private EditText Claimdate;
@@ -34,12 +34,12 @@ public class CreateClaimActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_claim);
-        Claimtitle = (EditText) findViewById(R.id.claim_title_value);
-        licensePlate = (Spinner) findViewById(R.id.license_plate);
-        description = (EditText) findViewById(R.id.claim_description);
-        Claimdate = (EditText) findViewById(R.id.date_claim);
-        submitClaimButton = (Button) findViewById(R.id.submitButton);
-        backMenuButton = (Button) findViewById(R.id.Back_button);
+        Claimtitle =  findViewById(R.id.claim_title_value);
+        licensePlate = findViewById(R.id.license_plate);
+        description = findViewById(R.id.claim_description);
+        Claimdate = findViewById(R.id.date_claim);
+        submitClaimButton = findViewById(R.id.submitButton);
+        backMenuButton = findViewById(R.id.Back_button);
         globalstate = (GlobalState) getApplicationContext();
 
 
@@ -87,7 +87,7 @@ public class CreateClaimActivity extends AppCompatActivity {
             }
         });
 
-        Button backMenuButton = (Button) findViewById(R.id.Back_button);
+        Button backMenuButton = findViewById(R.id.Back_button);
         backMenuButton.setOnClickListener(new View.OnClickListener() {
 
             @Override

@@ -8,7 +8,6 @@
     android:background="@drawable/four"
     tools:context=".activities.LoginActivity">
 
-
     <ImageView
         android:id="@+id/InSureLogo"
         android:layout_width="wrap_content"
