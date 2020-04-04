@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toolbar;
 
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.R;
@@ -25,6 +26,10 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        /*//say that we want to use our toolbar as our action bar replacement
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("InsureApp");*/
 
         //associate buttons to the respective ids
         claimHistoryButton = findViewById(R.id.claimHistoryButton);

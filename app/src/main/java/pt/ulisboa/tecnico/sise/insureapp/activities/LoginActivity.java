@@ -1,5 +1,6 @@
 package pt.ulisboa.tecnico.sise.insureapp.activities;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,9 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Log.d(TAG, "Button clicked");
-                /*gets the inserted values by the user
-                *we place this here assuming that the user will only click on the button
-                *after filling the username and password*/
+                /*gets the inserted values by the user*/
                 EditText name  = findViewById(R.id.username);
                 EditText pass = findViewById(R.id.loginPassword);
                 username = name.getText().toString();
