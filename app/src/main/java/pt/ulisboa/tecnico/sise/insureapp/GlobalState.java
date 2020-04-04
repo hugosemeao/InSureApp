@@ -4,6 +4,7 @@ import android.app.Application;
 
 import java.util.List;
 
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
 
 
@@ -42,5 +43,24 @@ public class GlobalState extends Application {
         this._sessionId = -1;
     }
 
+    public ClaimRecord getCustomerClaimRecord(int claimID){
+        List<ClaimRecord> claimRecords= this.customer.getClaimRecordList();
+        ClaimRecord returnedClaim=null;
+        if (claimRecords!=null){
+            for (ClaimRecord claim:claimRecords){
+                if (claim.getId()==claimID){
+                    returnedClaim=claim;
+                    break;
+                }
+            }
+        }
+        return returnedClaim;
+    }
+    public void addClaimRecordToCustomer(ClaimRecord claimRecord) {
+        ClaimRecord cr = this.getCustomerClaimRecord(claimRecord.getId());
+        if (cr == null) {
+            this.customer.addClaim(claimRecord);
+        }
+    }
 
     }

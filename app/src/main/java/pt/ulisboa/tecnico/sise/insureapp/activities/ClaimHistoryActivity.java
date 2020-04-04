@@ -1,6 +1,7 @@
 package pt.ulisboa.tecnico.sise.insureapp.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import pt.ulisboa.tecnico.sise.insureapp.ClaimHistoryAdapter;
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.R;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
+import pt.ulisboa.tecnico.sise.insureapp.serverCalls.GetClaimInfoTask;
 import pt.ulisboa.tecnico.sise.insureapp.serverCalls.ListClientClaimsTask;
 
 public class ClaimHistoryActivity extends AppCompatActivity {
@@ -26,6 +28,7 @@ public class ClaimHistoryActivity extends AppCompatActivity {
     private GlobalState _globalState;
     public Integer sessionID=1;
     private Button backButton;
+    private Context context=this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +42,29 @@ public class ClaimHistoryActivity extends AppCompatActivity {
         //Initialize claim adapter
         ClaimHistoryAdapter claimHistoryAdapter = new ClaimHistoryAdapter(this, R.layout.item_claim_history, _claimList);
 
+        //Setting on click response
+        _listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                // ListView Clicked item value
+                ClaimItem item = (ClaimItem) _listView.getItemAtPosition(position);
+
+                // Show Alert
+                Log.d(TAG,"Clicked on item: " + item.getId());
+
+                new GetClaimInfoTask(context).execute(_globalState.getSessionId(),item.getId());
+            }
+        });
+
         //Setup back button
         backButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Log.d(TAG, "claimHistoryButton clicked");
                 Intent intent = new Intent(ClaimHistoryActivity.this, MainMenuActivity.class);
-                //switches to ClaimHistoryActivity
+                //switches to MainMenuActivity
                 startActivity(intent);
             }
         });

@@ -1,23 +1,56 @@
 package pt.ulisboa.tecnico.sise.insureapp.serverCalls;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.text.PrecomputedText;
+import android.util.Log;
+import android.widget.Toast;
 
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
+import pt.ulisboa.tecnico.sise.insureapp.activities.ClaimDescriptionActivity;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimRecord;
-/*
-public class GetClaimInfoTask extends AsyncTask<Integer, Void, Void> {
+
+public class GetClaimInfoTask extends AsyncTask<Integer, Void, ClaimRecord> {
+    private static final String TAG = "GetClaimInfoTask";
     private Context context;
     private GlobalState globalState;
+    private Integer[] integers;
+
+    public GetClaimInfoTask(Context context){
+    this.context=context;
+    globalState=(GlobalState) context.getApplicationContext();
+
+    }
+    @Override
+    protected ClaimRecord doInBackground(Integer...params) {
+        ClaimRecord claimRecord = null;
+        Integer sessionID=params[0];
+        Integer claimID=params[1];
+        try {
+            claimRecord=WSHelper.getClaimInfo(sessionID,claimID);
+            Log.d(TAG,"Getting info of the claim " +claimRecord.getId());
+            return claimRecord;
+        } catch (Exception e) {
+            try {
+                claimRecord = globalState.getCustomerClaimRecord(claimID);
+            } catch (Exception e2) {
+                Log.d(TAG, e2.getMessage());
+            }
+        }
+    return claimRecord;
+    }
 
     @Override
-    protected Void doInBackground(Integer... integers) {
-        ClaimRecord claimRecord=null;
-        try {
-            claimRecord=WSHelper.getClaimInfo(integers[0],integers[1]);
-        } catch (Exception e) {
-            e.printStackTrace();
+    protected void onPostExecute(ClaimRecord claimRecord) {
+        if (claimRecord == null) {
+            Toast.makeText(globalState, "The claim record is not avilable!", Toast.LENGTH_LONG).show();
+        } else {
+            Intent intent = new Intent(context, ClaimDescriptionActivity.class);
+            intent.putExtra("key", "Title: " +claimRecord.getTitle()+"\nStatus: "+ claimRecord.getStatus()+"\nSubmission date:"+claimRecord.getSubmissionDate()+"\nOccurence Date: "+claimRecord.getOccurrenceDate()+"\nPlate: "+claimRecord.getPlate()+"\nDescription: "+claimRecord.getDescription()+"\nID: "+claimRecord.getId());
+            context.startActivity(intent);
         }
     }
+
 }
-*/

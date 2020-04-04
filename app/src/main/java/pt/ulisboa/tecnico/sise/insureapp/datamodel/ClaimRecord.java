@@ -11,7 +11,7 @@ public class ClaimRecord extends ClaimItem implements Serializable {
     private final String _plate;
     private final String _description;
     private String _status;
-    //    private final List<ClaimMessage> _claimMessageList;
+    private final List<ClaimMessage> _claimMessageList;
     public static final String STATUS_PENDING 	= "pending";	//could be done with enum watching for exceptions
     public static final String STATUS_ACCEPTED 	= "accepted";	//could be done with enum watching for exceptions
     public static final String STATUS_DENIED 	= "denied";		//could be done with enum watching for exceptions
@@ -24,7 +24,7 @@ public class ClaimRecord extends ClaimItem implements Serializable {
         _plate = plate;
         _description = description;
         _status = status;
-//        _claimMessageList = msgList;
+        _claimMessageList = msgList;
     }
 
     public ClaimRecord(int claimId, String claimTitle, String submissionDate, String occurrenceDate, String plate, String description, String status) {
@@ -58,10 +58,9 @@ public class ClaimRecord extends ClaimItem implements Serializable {
         }
         return false;
     }
-
-//    public List<ClaimMessage> getClaimMessageList() {
-//        return _claimMessageList;
-//    }
+    public List<ClaimMessage> getClaimMessageList() {
+        return _claimMessageList;
+    }
 //
 //    public boolean addClaimMessage(ClaimMessage claimMessage) {
 //        return _claimMessageList.add(claimMessage);

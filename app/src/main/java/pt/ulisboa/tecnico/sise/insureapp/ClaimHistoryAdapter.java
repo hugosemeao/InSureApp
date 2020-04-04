@@ -15,6 +15,8 @@ public class ClaimHistoryAdapter extends ArrayAdapter<ClaimItem> {
     public ClaimHistoryAdapter(Context context, int resource, List<ClaimItem> claimItemList) {
         super(context, resource,claimItemList);
     }
+
+    //Override of the getView method to adapt to the Claim Item
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
