@@ -38,5 +38,9 @@ public class GlobalState extends Application {
         return customer;
     }
 
+    public void resetSessionId() {
+        this._sessionId = -1;
+    }
+
 
     }

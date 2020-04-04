@@ -102,7 +102,7 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/LogOutButton"
+            android:id="@+id/logOutButton"
             android:layout_width="88dp"
             android:layout_height="43dp"
             android:backgroundTint="#FF9E80"

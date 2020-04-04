@@ -19,6 +19,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private Button claimHistoryButton;
     private Button newClaimButton;
     private Button customerInformationButton;
+    private Button logOutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class MainMenuActivity extends AppCompatActivity {
         claimHistoryButton = findViewById(R.id.claimHistoryButton);
         newClaimButton = findViewById(R.id.newClaimButton);
         customerInformationButton = findViewById(R.id.customerInformationButton);
+        logOutButton = findViewById(R.id.logOutButton);
 
         //listeners for each of the buttons
         claimHistoryButton.setOnClickListener(new View.OnClickListener(){
@@ -54,6 +56,18 @@ public class MainMenuActivity extends AppCompatActivity {
                 Log.d(TAG, "customerInformationButton clicked");
                 Intent intent = new Intent(MainMenuActivity.this, CustomerInformationActivity.class);
                 //switches to CustomerInformationActivity
+                startActivity(intent);
+            }
+        });
+
+        logOutButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Log.d(TAG, "logOutButton clicked");
+                //resets globalState's sessionID to an ivalid one, i.e -1
+                GlobalState globalState = (GlobalState) getApplicationContext();
+                globalState.resetSessionId();
+                //switches to CustomerInformationActivity
+                Intent intent = new Intent(MainMenuActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
