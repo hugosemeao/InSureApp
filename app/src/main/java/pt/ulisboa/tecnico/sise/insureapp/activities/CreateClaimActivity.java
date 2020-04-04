@@ -42,8 +42,6 @@ public class CreateClaimActivity extends AppCompatActivity {
         backMenuButton = findViewById(R.id.Back_button);
         globalstate = (GlobalState) getApplicationContext();
 
-
-
         Claimdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +73,7 @@ public class CreateClaimActivity extends AppCompatActivity {
                 String ClaimDescription = description.getText().toString();
 
                 if (!ClaimDate.isEmpty() && !ClaimDescription.isEmpty() && !ClaimPlateInformation.isEmpty() && !ClaimTitle.isEmpty()) {
-                    new WSSubmitNewClaimTask(context, globalstate.getSessionId()).execute(ClaimDate, ClaimDescription, ClaimPlateInformation, ClaimTitle);
+                    new WSSubmitNewClaimTask(context, globalstate.getSessionId()).execute(ClaimTitle, ClaimDate, ClaimPlateInformation, ClaimDescription);
 
                 } else {
                     Toast.makeText(context,

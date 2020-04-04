@@ -22,8 +22,8 @@ public class GlobalState extends Application {
             this.customer.setClaimRecords(oldCustomer.getClaimRecordList());
         }
     }
-    public void writeCustomerInCache(Object customer) {
-    }
+  //  public void writeCustomerInCache(Object customer)
+    // }
 
     public void setCustomerLicensePlates(List<String> result) {
     }

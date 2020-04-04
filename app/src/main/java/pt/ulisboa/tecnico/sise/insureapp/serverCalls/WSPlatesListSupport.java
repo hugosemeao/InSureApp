@@ -46,9 +46,9 @@ public class WSPlatesListSupport extends AsyncTask<Integer, Void, List<String>> 
                 ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(globalState, android.R.layout.simple_spinner_dropdown_item, result);
                 spinner.setAdapter(spinnerAdapter);
             }
-
-            globalState.setCustomerLicensePlates(result);
-            globalState.writeCustomerInCache(globalState.getCustomer());
+//
+  //          globalState.setCustomerLicensePlates(result);
+    //        globalState.writeCustomerInCache(globalState.getCustomer());
 
         } else {
             Toast.makeText(globalState.getApplicationContext(),
