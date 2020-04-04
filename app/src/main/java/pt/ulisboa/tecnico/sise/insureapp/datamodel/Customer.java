@@ -7,11 +7,14 @@ import java.util.List;
 public class Customer extends Person implements Serializable {
     private static final long serialVersionUID = 4895739450784438738L;
     private String _username;
+    private List<ClaimRecord> _claimRecordList;
+    private List<ClaimItem> _claimItemList;
     //    private String _password;
     private int _policyNumber;
     private int _sessionId = -1;
-//    private final List<ClaimRecord> _claimList;
-//    private final List<String> _plateList;
+    private final List<String> _plateList;
+    private final List<ClaimRecord> _claimList;
+
 
     public Customer(String username, String password, int sessionId, int policyNumber,
                     Person person, List<ClaimRecord> claimList, List<String> plateList) {
@@ -20,8 +23,8 @@ public class Customer extends Person implements Serializable {
 //        _password = password;
         _sessionId = sessionId;
         _policyNumber = policyNumber;
-//        _claimList = claimList;
-//        _plateList = plateList;
+        _claimList = claimList;
+        _plateList = plateList;
     }
 
     public Customer(String username, String password, int policyNumber,
@@ -93,18 +96,31 @@ public class Customer extends Person implements Serializable {
         setSessionId(-1);
     }
 
-//    public List<ClaimRecord> getClaimRecordList() {
-//        return _claimList;
-//    }
-//
-//    public List<String> getPlateList() {
-//        return _plateList;
-//    }
-//
-//    public boolean addClaim(ClaimRecord claimRecord) {
-//        return _claimList.add(claimRecord);
-//    }
-//
+    public List<ClaimRecord> getClaimRecordList() {
+        return _claimList;
+    }
+
+   public List<String> getPlateList() {
+        return _plateList;
+    }
+    public boolean addClaim(ClaimRecord claimRecord) {
+        return _claimItemList.add(claimRecord);
+    }
+
+
+    public List<ClaimItem> getClaimItemList() {
+        return _claimItemList;
+    }
+
+    public void setListofClaims(List<ClaimItem> _claimItemList) {
+        this._claimItemList = _claimItemList;
+    }
+
+    public void setClaimRecords(List<ClaimRecord> _claimList) {
+        this._claimRecordList = _claimList;
+    }
+
+
 //    public void addPlate(String plate) {
 //        _plateList.add(plate);
 //    }

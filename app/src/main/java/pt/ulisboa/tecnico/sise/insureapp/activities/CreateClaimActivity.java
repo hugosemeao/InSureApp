@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -13,8 +14,11 @@ import android.widget.Toast;
 import java.util.Calendar;
 import pt.ulisboa.tecnico.sise.insureapp.R;
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
+import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSPlatesListSupport;
+import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSSubmitNewClaimTask;
 
 public class CreateClaimActivity extends AppCompatActivity {
+    private static final String TAG = "BackButton";
     private DatePickerDialog datePickerDialog;
     private EditText Claimtitle;
     private EditText Claimdate;
@@ -27,7 +31,6 @@ public class CreateClaimActivity extends AppCompatActivity {
 
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_claim);
@@ -39,13 +42,12 @@ public class CreateClaimActivity extends AppCompatActivity {
         backMenuButton = (Button) findViewById(R.id.Back_button);
         globalstate = (GlobalState) getApplicationContext();
 
-        // initiate the date picker and a button
-        // perform click event on edit text
 
- /*       Claimdate.setOnClickListener(new View.OnClickListener() {
+
+        Claimdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // calender class's instance and get current date , month and year from calender
+                // calender class's instance and get current date , month and year from the calendaqr
                 final Calendar AppCalendar = Calendar.getInstance();
                 int mYear = AppCalendar.get(Calendar.YEAR); // current year
                 int mMonth = AppCalendar.get(Calendar.MONTH); // current month
@@ -64,7 +66,6 @@ public class CreateClaimActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-
         submitClaimButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,27 +77,9 @@ public class CreateClaimActivity extends AppCompatActivity {
                 if (!ClaimDate.isEmpty() && !ClaimDescription.isEmpty() && !ClaimPlateInformation.isEmpty() && !ClaimTitle.isEmpty()) {
                     new WSSubmitNewClaimTask(context, globalstate.getSessionId()).execute(ClaimDate, ClaimDescription, ClaimPlateInformation, ClaimTitle);
 
-                } else if (ClaimDate.isEmpty() && !ClaimDescription.isEmpty() && !ClaimPlateInformation.isEmpty() && !ClaimTitle.isEmpty()) {
+                } else {
                     Toast.makeText(context,
-                            "Error: Please fill the date",
-                            Toast.LENGTH_SHORT)
-                            .show();
-
-                } else if (!ClaimDate.isEmpty() && ClaimDescription.isEmpty() && !ClaimPlateInformation.isEmpty() && !ClaimTitle.isEmpty()) {
-                    Toast.makeText(context,
-                            "Error: Please enter a claim description",
-                            Toast.LENGTH_SHORT)
-                            .show();
-
-                } else if (!ClaimDate.isEmpty() && !ClaimDescription.isEmpty() && ClaimPlateInformation.isEmpty() && !ClaimTitle.isEmpty()) {
-                    Toast.makeText(context,
-                            "Error: Enter the plate informarion",
-                            Toast.LENGTH_SHORT)
-                            .show();
-
-                } else if (!ClaimDate.isEmpty() && !ClaimDescription.isEmpty() && !ClaimPlateInformation.isEmpty() && ClaimTitle.isEmpty()) {
-                    Toast.makeText(context,
-                            "Error: Enter a claim title ",
+                            "Ups! Some parameters are missing",
                             Toast.LENGTH_SHORT)
                             .show();
                 }
@@ -106,12 +89,20 @@ public class CreateClaimActivity extends AppCompatActivity {
 
         Button backMenuButton = (Button) findViewById(R.id.Back_button);
         backMenuButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMenuActivity.this, CreateClaimActivity.class);
+                Log.d(TAG, "Back Button Clicked");
+                Intent intent = new Intent(CreateClaimActivity.this, MainMenuActivity.class);
                 startActivity(intent);
             }
-        });*/
-
+        });
     }
-}
+
+        @Override
+        protected void onStart() {
+            super.onStart();
+
+            new WSPlatesListSupport(licensePlate, this.context).execute(globalstate.getSessionId());
+        }
+    }

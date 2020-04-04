@@ -48,10 +48,10 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.219"
+            app:layout_constraintHorizontal_bias="0.216"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/claim_details_intro"
-            app:layout_constraintVertical_bias="0.484"
+            app:layout_constraintVertical_bias="0.377"
             tools:ignore="MissingConstraints" />
 
 
@@ -67,12 +67,11 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.662"
+            app:layout_constraintHorizontal_bias="0.664"
             app:layout_constraintStart_toStartOf="@+id/Back_button"
             app:layout_constraintTop_toBottomOf="@+id/claim_details_intro"
-            app:layout_constraintVertical_bias="0.484"
+            app:layout_constraintVertical_bias="0.377"
             tools:ignore="UnknownId" />
-
 
         <TextView
             android:id="@+id/claim_title_title"
@@ -86,7 +85,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/claim_details_intro"
-            app:layout_constraintVertical_bias="0.089"
+            app:layout_constraintVertical_bias="0.05"
             tools:ignore="MissingConstraints" />
 
         <EditText
@@ -115,24 +114,25 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/claim_title_title"
-            app:layout_constraintVertical_bias="0.247"
+            app:layout_constraintVertical_bias="0.188"
             tools:ignore="MissingConstraints" />
+
 
         <Spinner
             android:id="@+id/license_plate"
             android:layout_width="324dp"
             android:layout_height="25dp"
+            android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/submitButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintHorizontal_bias="0.528"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/claim_title_value"
-            app:layout_constraintVertical_bias="0.227"
+            app:layout_constraintVertical_bias="0.147"
             tools:ignore="MissingConstraints" />
-
 
         <TextView
             android:id="@+id/claim_describer_title"
@@ -148,13 +148,13 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/car_plate_title"
-            app:layout_constraintVertical_bias="0.622"
+            app:layout_constraintVertical_bias="0.521"
             tools:ignore="MissingConstraints" />
 
         <EditText
             android:id="@+id/claim_description"
-            android:layout_width="320dp"
-            android:layout_height="66dp"
+            android:layout_width="318dp"
+            android:layout_height="101dp"
             android:ems="10"
             android:hint="Enter a description of the claim"
             android:importantForAutofill="no"
@@ -181,7 +181,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/car_plate_title"
-            app:layout_constraintVertical_bias="0.388" />
+            app:layout_constraintVertical_bias="0.317" />
 
         <EditText
             android:id="@+id/date_claim"
@@ -191,8 +191,11 @@
             android:hint="Insert a date"
             android:inputType="date"
             android:textAlignment="center"
-            tools:layout_editor_absoluteX="103dp"
-            tools:layout_editor_absoluteY="351dp" />
+            app:layout_constraintBottom_toTopOf="@+id/claim_describer_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date_of_ocurance_title"
+            app:layout_constraintVertical_bias="0.562" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
