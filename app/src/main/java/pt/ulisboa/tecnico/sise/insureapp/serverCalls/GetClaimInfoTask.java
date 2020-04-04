@@ -29,15 +29,12 @@ public class GetClaimInfoTask extends AsyncTask<Integer, Void, ClaimRecord> {
         Integer sessionID=params[0];
         Integer claimID=params[1];
         try {
+            //try get claim record from server
             claimRecord=WSHelper.getClaimInfo(sessionID,claimID);
             Log.d(TAG,"Getting info of the claim " +claimRecord.getId());
             return claimRecord;
         } catch (Exception e) {
-            try {
-                claimRecord = globalState.getCustomerClaimRecord(claimID);
-            } catch (Exception e2) {
-                Log.d(TAG, e2.getMessage());
-            }
+            Log.d(TAG,e.getMessage());
         }
     return claimRecord;
     }
@@ -47,6 +44,7 @@ public class GetClaimInfoTask extends AsyncTask<Integer, Void, ClaimRecord> {
         if (claimRecord == null) {
             Toast.makeText(globalState, "The claim record is not avilable!", Toast.LENGTH_LONG).show();
         } else {
+            //Create Intent to send to the Calaim description activity
             Intent intent = new Intent(context, ClaimDescriptionActivity.class);
             intent.putExtra("key", "Title: " +claimRecord.getTitle()+"\nStatus: "+ claimRecord.getStatus()+"\nSubmission date:"+claimRecord.getSubmissionDate()+"\nOccurence Date: "+claimRecord.getOccurrenceDate()+"\nPlate: "+claimRecord.getPlate()+"\nDescription: "+claimRecord.getDescription()+"\nID: "+claimRecord.getId());
             context.startActivity(intent);
