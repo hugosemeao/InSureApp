@@ -48,10 +48,9 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/claim_details_intro"
-            app:layout_constraintVertical_bias="0.836" />
+            app:layout_constraintVertical_bias="0.409" />
 
         <TextView
             android:id="@+id/claim_title_title"
@@ -63,37 +62,42 @@
             android:textColor="#4757AA"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/claim_details_intro"
-            app:layout_constraintVertical_bias="0.046" />
+            app:layout_constraintVertical_bias="0.078" />
 
         <EditText
             android:id="@+id/claim_title_value"
             android:layout_width="319dp"
             android:layout_height="35dp"
+            android:layout_weight="2"
             android:autofillHints=""
             android:ems="10"
+            android:gravity="center_vertical"
             android:inputType="textShortMessage"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/claim_title_title"
-            app:layout_constraintVertical_bias="0.04" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/editText2"
             android:layout_width="319dp"
             android:layout_height="35dp"
+            android:layout_weight="2"
             android:autofillHints=""
             android:ems="10"
+            android:gravity="center_vertical"
             android:inputType="textShortMessage"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/claim_title_title"
-            app:layout_constraintVertical_bias="0.264" />
+            app:layout_constraintVertical_bias="0.195" />
 
         <TextView
             android:id="@+id/car_plate_title"
@@ -104,9 +108,10 @@
             android:textColor="#4757AA"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/claim_title_title"
-            app:layout_constraintVertical_bias="0.166" />
+            app:layout_constraintVertical_bias="0.128" />
 
         <TextView
             android:id="@+id/textView2"
@@ -119,7 +124,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/claim_title_title"
-            app:layout_constraintVertical_bias="0.373" />
+            app:layout_constraintVertical_bias="0.313" />
 
         <TextView
             android:id="@+id/textView5"
@@ -130,10 +135,9 @@
             android:textColor="#4757AA"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/claim_title_title"
-            app:layout_constraintVertical_bias="0.601" />
+            app:layout_constraintVertical_bias="0.504" />
 
         <TextView
             android:id="@+id/textView6"
@@ -144,51 +148,56 @@
             android:textColor="#4757AA"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/claim_title_title"
-            app:layout_constraintVertical_bias="0.823" />
+            app:layout_constraintVertical_bias="0.71" />
 
         <EditText
             android:id="@+id/editText5"
-            android:layout_width="323dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="52dp"
+            android:layout_width="319dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="44dp"
+            android:layout_weight="2"
+            android:autofillHints=""
             android:ems="10"
+            android:gravity="center_vertical"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.477"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText3"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
         <EditText
             android:id="@+id/editText6"
-            android:layout_width="321dp"
-            android:layout_height="42dp"
+            android:layout_width="319dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
+            android:importantForAutofill="no"
             android:inputType="number"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText5"
-            app:layout_constraintVertical_bias="0.771"
-            android:importantForAutofill="no" />
+            app:layout_constraintVertical_bias="0.328" />
 
         <EditText
             android:id="@+id/editText3"
-            android:layout_width="323dp"
-            android:layout_height="44dp"
+            android:layout_width="319dp"
+            android:layout_height="35dp"
+            android:layout_weight="2"
+            android:autofillHints=""
             android:ems="10"
+            android:gravity="center_vertical"
             android:inputType="textPostalAddress"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.477"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText2"
-            app:layout_constraintVertical_bias="0.212"
-            android:autofillHints="" />
+            app:layout_constraintVertical_bias="0.16" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
