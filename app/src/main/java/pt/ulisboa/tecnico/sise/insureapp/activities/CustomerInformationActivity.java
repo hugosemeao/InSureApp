@@ -31,7 +31,7 @@ public class CustomerInformationActivity extends AppCompatActivity {
             public void onClick(View v){
                 Log.d(TAG, "backButton clicked");
                 Intent intent = new Intent(CustomerInformationActivity.this, MainMenuActivity.class);
-                //switches to ClaimHistoryActivity
+                //switches to MainActivityClass
                 startActivity(intent);
             }
         });
