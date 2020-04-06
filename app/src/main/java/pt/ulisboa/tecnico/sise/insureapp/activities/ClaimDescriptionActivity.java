@@ -29,6 +29,12 @@ public class ClaimDescriptionActivity extends AppCompatActivity {
         textView= (TextView) findViewById(R.id.textView7);
         backButton=(Button) findViewById(R.id.Back_button);
 
+        //get the intent from previous activity and print his info in the textView
+        intent=getIntent();
+        //TODO
+        bundle=this.intent.getExtras();
+        textView.setText(bundle.getString("key"));
+
         //Setup back button
         backButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -39,15 +45,4 @@ public class ClaimDescriptionActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //get the intent from previous activity and print his info in the textView
-        intent=getIntent();
-        //TODO
-        bundle=this.intent.getExtras();
-        textView.setText(bundle.getString("key"));
-    }
-
 }

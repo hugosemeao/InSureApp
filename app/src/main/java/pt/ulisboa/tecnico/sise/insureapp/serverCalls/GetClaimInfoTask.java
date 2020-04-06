@@ -44,7 +44,7 @@ public class GetClaimInfoTask extends AsyncTask<Integer, Void, ClaimRecord> {
         if (claimRecord == null) {
             Toast.makeText(globalState, "The claim record is not avilable!", Toast.LENGTH_LONG).show();
         } else {
-            //Create Intent to send to the Calaim description activity
+            //Create Intent to send to the Claim description activity
             Intent intent = new Intent(context, ClaimDescriptionActivity.class);
             intent.putExtra("key", "Title: " +claimRecord.getTitle()+"\nStatus: "+ claimRecord.getStatus()+"\nSubmission date:"+claimRecord.getSubmissionDate()+"\nOccurence Date: "+claimRecord.getOccurrenceDate()+"\nPlate: "+claimRecord.getPlate()+"\nDescription: "+claimRecord.getDescription()+"\nID: "+claimRecord.getId());
             context.startActivity(intent);
