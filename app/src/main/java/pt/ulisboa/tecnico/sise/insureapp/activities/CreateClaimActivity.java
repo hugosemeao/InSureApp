@@ -34,7 +34,7 @@ public class CreateClaimActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_claim);
-        Claimtitle =  findViewById(R.id.claim_title_value);
+        Claimtitle =  findViewById(R.id.name);
         licensePlate = findViewById(R.id.license_plate);
         description = findViewById(R.id.claim_description);
         Claimdate = findViewById(R.id.date_claim);

@@ -67,13 +67,13 @@
             app:layout_constraintVertical_bias="0.078" />
 
         <EditText
-            android:id="@+id/claim_title_value"
+            android:id="@+id/name"
             android:layout_width="319dp"
             android:layout_height="40dp"
             android:layout_weight="2"
             android:autofillHints=""
             android:ems="10"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:inputType="textShortMessage"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
@@ -84,13 +84,13 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/fiscalNum"
             android:layout_width="319dp"
             android:layout_height="40dp"
             android:layout_weight="2"
             android:autofillHints=""
             android:ems="10"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:inputType="textShortMessage"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -153,50 +153,50 @@
             app:layout_constraintVertical_bias="0.71" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/dateBirth"
             android:layout_width="319dp"
             android:layout_height="40dp"
             android:layout_marginTop="32dp"
             android:layout_weight="2"
             android:autofillHints=""
             android:ems="10"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintTop_toBottomOf="@+id/address" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/policyNuber"
             android:layout_width="319dp"
             android:layout_height="40dp"
             android:layout_weight="1"
             android:ems="10"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:importantForAutofill="no"
             android:inputType="number"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText5"
+            app:layout_constraintTop_toBottomOf="@+id/dateBirth"
             app:layout_constraintVertical_bias="0.328" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/address"
             android:layout_width="319dp"
             android:layout_height="40dp"
             android:layout_weight="2"
             android:autofillHints=""
             android:ems="10"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:inputType="textPostalAddress"
             app:layout_constraintBottom_toTopOf="@+id/Back_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            app:layout_constraintTop_toBottomOf="@+id/fiscalNum"
             app:layout_constraintVertical_bias="0.16" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

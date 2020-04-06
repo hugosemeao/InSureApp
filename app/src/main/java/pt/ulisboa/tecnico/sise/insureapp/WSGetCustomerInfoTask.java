@@ -3,7 +3,6 @@ package pt.ulisboa.tecnico.sise.insureapp;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.text.TextUtils;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,11 +60,11 @@ public class WSGetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
             Log.d(TAG, "Get customer info result => " + customer.toString());
 
             if (_activityContext != null) {
-                customer_name = (TextView) _activityContext.findViewById(R.id.claim_title_value);
-                policy_id = (TextView) _activityContext.findViewById(R.id.editText6);
-                birth_date = (TextView) _activityContext.findViewById(R.id.editText5);
-                address = (TextView) _activityContext.findViewById(R.id.editText3);
-                nif = (TextView) _activityContext.findViewById(R.id.editText2);
+                customer_name = (TextView) _activityContext.findViewById(R.id.name);
+                policy_id = (TextView) _activityContext.findViewById(R.id.policyNuber);
+                birth_date = (TextView) _activityContext.findViewById(R.id.dateBirth);
+                address = (TextView) _activityContext.findViewById(R.id.address);
+                nif = (TextView) _activityContext.findViewById(R.id.fiscalNum);
 
                 String nifString = (customer.getFiscalNumber() <= 0 ? "" : String.valueOf(customer.getFiscalNumber()));
                 String policyString = (customer.getPolicyNumber() <= 0 ? "" : String.valueOf(customer.getPolicyNumber()));
