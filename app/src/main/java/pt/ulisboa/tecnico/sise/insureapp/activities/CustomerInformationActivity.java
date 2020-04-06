@@ -16,12 +16,26 @@ import pt.ulisboa.tecnico.sise.insureapp.WSGetCustomerInfoTask;
 
 public class CustomerInformationActivity extends AppCompatActivity {
 
+    private final String TAG = "customerInformationAct";
     private Activity _activity = this;
+    private Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_information);
+
+        backButton = findViewById(R.id.Back_button);
+
+        //listeners for the back button
+        backButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Log.d(TAG, "backButton clicked");
+                Intent intent = new Intent(CustomerInformationActivity.this, MainMenuActivity.class);
+                //switches to ClaimHistoryActivity
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
