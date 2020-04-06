@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.insureapp;
+package pt.ulisboa.tecnico.sise.insureapp.serverCalls;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
+import pt.ulisboa.tecnico.sise.insureapp.R;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
 import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSHelper;
 

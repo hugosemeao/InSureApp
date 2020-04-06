@@ -7,11 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.R;
-import pt.ulisboa.tecnico.sise.insureapp.WSGetCustomerInfoTask;
+import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSGetCustomerInfoTask;
 
 
 public class CustomerInformationActivity extends AppCompatActivity {
