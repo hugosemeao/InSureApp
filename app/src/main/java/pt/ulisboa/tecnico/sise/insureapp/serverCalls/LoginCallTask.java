@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.net.SocketTimeoutException;
+
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.activities.LoginActivity;
 import pt.ulisboa.tecnico.sise.insureapp.activities.MainMenuActivity;
@@ -39,10 +41,8 @@ public class LoginCallTask extends AsyncTask<String, Integer, Integer> {
             sessionId = WSHelper.login(username, password);// exists and password
             Log.d(TAG, "Login result => " + sessionId + " "+ params[0] + "," + params[1]);
             return sessionId;
-
         } catch (Exception e) {
             Log.d(TAG, e.toString());
-
         }
 
         return null;
@@ -50,6 +50,11 @@ public class LoginCallTask extends AsyncTask<String, Integer, Integer> {
 
     @Override
     protected void onPostExecute(Integer sessionID){
+        if(sessionID == null){
+            //something went wrong when invoking the server
+            Toast.makeText(context,"Something went Wrong. Please try again later.",Toast.LENGTH_LONG).show();
+            return;
+        }
         //store session id in the application context (shared "memory")
         this.globalState.setSessionId(sessionID);
         //sessioID < 1 is invalid credetials

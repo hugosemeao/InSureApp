@@ -6,20 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/four"
-    tools:context=".activities.LoginActivity">
+    tools:context=".activities.LoginActivity"
+    android:windowActionBarOverlay="true">
 
     <ImageView
         android:id="@+id/InSureLogo"
         android:layout_width="wrap_content"
         android:layout_height="123dp"
-        android:layout_marginTop="16dp"
         android:contentDescription="@string/InSureDescription"
+        android:windowActionBarOverlay="true"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.683"
+        app:layout_constraintVertical_bias="0.412"
         app:srcCompat="@drawable/logo" />
 
     <EditText
@@ -27,10 +28,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="328dp"
         android:layout_marginEnd="24dp"
 
 
+        android:layout_marginBottom="32dp"
         android:autofillHints=""
         android:fontFamily="sans-serif-condensed-light"
         android:hint="@string/prompt_email"
@@ -43,19 +44,18 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/loginPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/loginPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="456dp"
         android:layout_marginEnd="24dp"
 
 
+        android:layout_marginBottom="364dp"
         android:autofillHints=""
         android:fontFamily="sans-serif-condensed-light"
         android:hint="@string/prompt_password"
@@ -64,24 +64,25 @@
         android:textAlignment="center"
         android:textColorHint="#000000"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="93dp"
+        android:layout_height="51dp"
         android:backgroundTint="#B9F6CA"
         android:hint="@string/title_activity_login"
         android:text="@string/title_activity_login"
         android:textColor="#215A31"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/loginPassword"
+        app:layout_constraintVertical_bias="0.092" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
