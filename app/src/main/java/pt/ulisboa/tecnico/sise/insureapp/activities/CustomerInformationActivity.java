@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.R;
-import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSGetCustomerInfoTask;
+import pt.ulisboa.tecnico.sise.insureapp.serverCalls.GetCustomerInfoTask;
 
 
 public class CustomerInformationActivity extends AppCompatActivity {
@@ -42,7 +42,7 @@ public class CustomerInformationActivity extends AppCompatActivity {
         super.onStart();
 
         GlobalState gs = (GlobalState) getApplicationContext();
-        new WSGetCustomerInfoTask(gs, _activity).execute(gs.getSessionId());
+        new GetCustomerInfoTask(gs, _activity).execute(gs.getSessionId());
     }
 }
 

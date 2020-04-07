@@ -12,7 +12,7 @@ import pt.ulisboa.tecnico.sise.insureapp.R;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
 import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSHelper;
 
-public class WSGetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
+public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
     public final static String TAG = "GetCustomerInfoTask";
 
     private Activity _activityContext;
@@ -24,7 +24,7 @@ public class WSGetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
     private TextView address;
     private TextView nif;
 
-    public WSGetCustomerInfoTask(Context globalState, Activity activity) {
+    public GetCustomerInfoTask(Context globalState, Activity activity) {
         _gs = (GlobalState)globalState;
         _activityContext = activity;
     }
@@ -40,7 +40,7 @@ public class WSGetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
 
         } catch (Exception e) {
 
-            customer = _gs.getCustomer();
+             //customer = _gs.getCustomer();
 
             Log.d(TAG, "Customer obtained from cache - globalState");
         }
@@ -78,8 +78,6 @@ public class WSGetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
                 nif.setText(nifString);
             }
 
-            _gs.setCustomer(customer);
-            _gs.writeCustomerInCache(customer);
         }
 
     }

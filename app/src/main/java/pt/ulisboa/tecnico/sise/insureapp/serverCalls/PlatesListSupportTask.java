@@ -11,12 +11,12 @@ import java.util.List;
 
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 
-public class WSPlatesListSupport extends AsyncTask<Integer, Void, List<String>> {
+public class PlatesListSupportTask extends AsyncTask<Integer, Void, List<String>> {
     public final static String TAG = "PlatesList";
     private Spinner spinner;
     private GlobalState globalState;
 
-    public WSPlatesListSupport(Spinner spinner, Context context) {
+    public PlatesListSupportTask(Spinner spinner, Context context) {
     this.spinner = spinner;
     this.globalState = (GlobalState)context.getApplicationContext();
     }
@@ -46,9 +46,6 @@ public class WSPlatesListSupport extends AsyncTask<Integer, Void, List<String>> 
                 ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(globalState, android.R.layout.simple_spinner_dropdown_item, result);
                 spinner.setAdapter(spinnerAdapter);
             }
-//
-  //          globalState.setCustomerLicensePlates(result);
-    //        globalState.writeCustomerInCache(globalState.getCustomer());
 
         } else {
             Toast.makeText(globalState.getApplicationContext(),

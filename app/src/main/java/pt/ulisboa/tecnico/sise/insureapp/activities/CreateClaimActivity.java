@@ -14,8 +14,8 @@ import android.widget.Toast;
 import java.util.Calendar;
 import pt.ulisboa.tecnico.sise.insureapp.R;
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
-import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSPlatesListSupport;
-import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSSubmitNewClaimTask;
+import pt.ulisboa.tecnico.sise.insureapp.serverCalls.PlatesListSupportTask;
+import pt.ulisboa.tecnico.sise.insureapp.serverCalls.SubmitNewClaimTask;
 
 public class CreateClaimActivity extends AppCompatActivity {
     private static final String TAG = "createClaimActivity";
@@ -34,36 +34,39 @@ public class CreateClaimActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_claim);
-        Claimtitle =  findViewById(R.id.name);
+        Claimtitle = findViewById(R.id.name);
         licensePlate = findViewById(R.id.license_plate);
         description = findViewById(R.id.claim_description);
         Claimdate = findViewById(R.id.date_claim);
         submitClaimButton = findViewById(R.id.submitButton);
         backMenuButton = findViewById(R.id.Back_button);
         globalstate = (GlobalState) getApplicationContext();
+        new PlatesListSupportTask(licensePlate, this.context).execute(globalstate.getSessionId());
+
 
         Claimdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // calender class's instance and get current date , month and year from the calendaqr
+                // calendar class's instance and get current date , month and year from the calendaqr
                 final Calendar AppCalendar = Calendar.getInstance();
-                int mYear = AppCalendar.get(Calendar.YEAR); // current year
-                int mMonth = AppCalendar.get(Calendar.MONTH); // current month
-                int mDay = AppCalendar.get(Calendar.DAY_OF_MONTH); // current day
-                // date picker dialog
+                int mYear = AppCalendar.get(Calendar.YEAR);
+                int mMonth = AppCalendar.get(Calendar.MONTH);
+                int mDay = AppCalendar.get(Calendar.DAY_OF_MONTH);
+
                 datePickerDialog = new DatePickerDialog(CreateClaimActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
-                                // set day of month , month and year value in the edit text
                                 Claimdate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
             }
         });
+
+
         submitClaimButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +76,7 @@ public class CreateClaimActivity extends AppCompatActivity {
                 String ClaimDescription = description.getText().toString();
 
                 if (!ClaimDate.isEmpty() && !ClaimDescription.isEmpty() && !ClaimPlateInformation.isEmpty() && !ClaimTitle.isEmpty()) {
-                    new WSSubmitNewClaimTask(context, globalstate.getSessionId()).execute(ClaimTitle, ClaimDate, ClaimPlateInformation, ClaimDescription);
+                    new SubmitNewClaimTask(context, globalstate.getSessionId()).execute(ClaimTitle, ClaimDate, ClaimPlateInformation, ClaimDescription);
 
                 } else {
                     Toast.makeText(context,
@@ -81,7 +84,6 @@ public class CreateClaimActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT)
                             .show();
                 }
-
             }
         });
 
@@ -97,10 +99,4 @@ public class CreateClaimActivity extends AppCompatActivity {
         });
     }
 
-        @Override
-        protected void onStart() {
-            super.onStart();
-
-            new WSPlatesListSupport(licensePlate, this.context).execute(globalstate.getSessionId());
-        }
-    }
+}
