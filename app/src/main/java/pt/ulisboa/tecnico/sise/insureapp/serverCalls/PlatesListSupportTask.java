@@ -66,9 +66,6 @@ public class PlatesListSupportTask extends AsyncTask<Integer, Void, List<String>
                     Toast.LENGTH_SHORT)
                     .show();
         }
-
-
     }
-
 }
 
