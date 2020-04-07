@@ -6,9 +6,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import java.util.List;
-
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 
 public class PlatesListSupportTask extends AsyncTask<Integer, Void, List<String>> {
@@ -28,11 +26,7 @@ public class PlatesListSupportTask extends AsyncTask<Integer, Void, List<String>
         try {
             result = WSHelper.listPlates(sessionId);
         } catch (Exception e) {
-            try {
-                result = globalState.getCustomer().getPlateList();
-            } catch (NullPointerException el) {
-                Log.d(TAG, el.toString());
-            }
+            Log.d(TAG,e.getMessage());
         }
         return result;
     }

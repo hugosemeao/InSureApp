@@ -41,6 +41,8 @@ public class CreateClaimActivity extends AppCompatActivity {
         submitClaimButton = findViewById(R.id.submitButton);
         backMenuButton = findViewById(R.id.Back_button);
         globalstate = (GlobalState) getApplicationContext();
+        new PlatesListSupportTask(licensePlate, this.context).execute(globalstate.getSessionId());
+
 
         Claimdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +83,6 @@ public class CreateClaimActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT)
                             .show();
                 }
-
             }
         });
 
@@ -97,10 +98,4 @@ public class CreateClaimActivity extends AppCompatActivity {
         });
     }
 
-        @Override
-        protected void onStart() {
-            super.onStart();
-
-            new PlatesListSupportTask(licensePlate, this.context).execute(globalstate.getSessionId());
 }
-    }
