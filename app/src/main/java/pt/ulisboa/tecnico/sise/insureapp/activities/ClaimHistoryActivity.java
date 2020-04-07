@@ -42,6 +42,10 @@ public class ClaimHistoryActivity extends AppCompatActivity {
         //Initialize claim adapter
         ClaimHistoryAdapter claimHistoryAdapter = new ClaimHistoryAdapter(this, R.layout.item_claim_history, _claimList);
 
+        //Call list claims task
+        _globalState = (GlobalState) getApplicationContext();
+        new ListClientClaimsTask(this,_listView).execute(_globalState.getSessionId());
+
         //Setting on click response
         _listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -65,12 +69,5 @@ public class ClaimHistoryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        _globalState = (GlobalState) getApplicationContext();
-        new ListClientClaimsTask(this,_listView).execute(_globalState.getSessionId());
     }
 }
