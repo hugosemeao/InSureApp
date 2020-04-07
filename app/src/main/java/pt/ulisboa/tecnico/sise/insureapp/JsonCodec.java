@@ -91,6 +91,18 @@ public class JsonCodec {
         return jsonClaim.toString();
     }
 
+    //similar to encodeClaimMethod but for a file that has not been submitted yet
+    public static String encodeNewClaimInfo(NewClaimInfo newClaim) throws Exception {
+        if (newClaim == null) return "";
+        JSONObject jsonClaim = new JSONObject();
+        jsonClaim.put("claimTitle", newClaim.getClaimTitle());
+        jsonClaim.put("plate", newClaim.getClaimPlateInformation());
+        jsonClaim.put("occurrenceDate", newClaim.getClaimDate());
+        jsonClaim.put("description", newClaim.getClaimDescription());
+        Log.i(TAG, "encodeNewClaim:" + jsonClaim.toString());
+        return jsonClaim.toString();
+    }
+
     public static List<String> decodePlateList(String jsonResult) {
         ArrayList<String> plateList = null;
         Log.i(TAG, "decodePlateList:" + jsonResult);
