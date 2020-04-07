@@ -52,7 +52,7 @@ public class ClaimHistoryActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                // Get the item cliked value
+                // Get the clicked value
                 ClaimItem item = (ClaimItem) _listView.getItemAtPosition(position);
                 Log.d(TAG,"Clicked on item: " + item.getId());
                 //Run GetClaimInfoTask with the info of the clicked item

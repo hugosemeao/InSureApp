@@ -31,7 +31,6 @@ public class ClaimDescriptionActivity extends AppCompatActivity {
 
         //get the intent from previous activity and print his info in the textView
         intent=getIntent();
-        //TODO
         bundle=this.intent.getExtras();
         textView.setText(bundle.getString("key"));
 

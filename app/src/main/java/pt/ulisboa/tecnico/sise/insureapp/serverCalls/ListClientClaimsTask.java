@@ -13,6 +13,8 @@ import java.util.List;
 
 import pt.ulisboa.tecnico.sise.insureapp.ClaimHistoryAdapter;
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
+import pt.ulisboa.tecnico.sise.insureapp.JsonCodec;
+import pt.ulisboa.tecnico.sise.insureapp.JsonFileManager;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
 import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSHelper;
 
@@ -32,8 +34,17 @@ public class ListClientClaimsTask extends AsyncTask<Integer,Void,List<ClaimItem>
     @Override
     protected List<ClaimItem> doInBackground(Integer... sessionId) {
         List<ClaimItem> claimItemList = new ArrayList<>();
+        List<ClaimItem> returnedClaimItemList;
         try {
-            claimItemList = WSHelper.listClaims(sessionId[0]);
+            returnedClaimItemList = WSHelper.listClaims(sessionId[0]);
+            if (returnedClaimItemList==null){
+                //checking customer json
+                String customerClaimItemListJson = JsonFileManager.jsonReadFromFile(listView.getContext(),"claimItemList.json");
+                //Decoding JSON and assign to claimItemList
+                claimItemList=JsonCodec.decodeClaimList(customerClaimItemListJson);
+            } else {
+                claimItemList=returnedClaimItemList;
+            }
         } catch (Exception e) {
             Log.d(TAG, e.toString());
         }
@@ -55,7 +66,18 @@ public class ListClientClaimsTask extends AsyncTask<Integer,Void,List<ClaimItem>
                 ArrayAdapter<ClaimItem> claimHistoryAdapter = new ClaimHistoryAdapter(context,
                         android.R.layout.simple_list_item_1, claimItemList);
                 listView.setAdapter(claimHistoryAdapter);
+/*                //Setting file name
+                String claimItemListFileName = globalState.getCustomer().getUsername()+ "claimItemList.json";
+                try {
+                    //Converting information to json type string
+                    String claimItemListJson = JsonCodec.encodeClaimList(claimItemList);
+                    //Writing information into a JSON file
+                    JsonFileManager.jsonWriteToFile(listView.getContext(),claimItemListFileName,claimItemListJson);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }*/
             }
         }
+
     }
 }
