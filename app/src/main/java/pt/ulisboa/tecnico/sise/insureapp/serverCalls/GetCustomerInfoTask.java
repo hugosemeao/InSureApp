@@ -14,7 +14,6 @@ import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSHelper;
 
 public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
     public final static String TAG = "GetCustomerInfoTask";
-
     private Activity _activityContext;
     private TextView customer_name;
     private TextView policy_id;
