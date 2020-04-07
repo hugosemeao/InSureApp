@@ -14,8 +14,8 @@ import android.widget.Toast;
 import java.util.Calendar;
 import pt.ulisboa.tecnico.sise.insureapp.R;
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
-import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSPlatesListSupport;
-import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSSubmitNewClaimTask;
+import pt.ulisboa.tecnico.sise.insureapp.serverCalls.PlatesListSupportTask;
+import pt.ulisboa.tecnico.sise.insureapp.serverCalls.SubmitNewClaimTask;
 
 public class CreateClaimActivity extends AppCompatActivity {
     private static final String TAG = "createClaimActivity";
@@ -73,7 +73,7 @@ public class CreateClaimActivity extends AppCompatActivity {
                 String ClaimDescription = description.getText().toString();
 
                 if (!ClaimDate.isEmpty() && !ClaimDescription.isEmpty() && !ClaimPlateInformation.isEmpty() && !ClaimTitle.isEmpty()) {
-                    new WSSubmitNewClaimTask(context, globalstate.getSessionId()).execute(ClaimTitle, ClaimDate, ClaimPlateInformation, ClaimDescription);
+                    new SubmitNewClaimTask(context, globalstate.getSessionId()).execute(ClaimTitle, ClaimDate, ClaimPlateInformation, ClaimDescription);
 
                 } else {
                     Toast.makeText(context,
@@ -101,6 +101,6 @@ public class CreateClaimActivity extends AppCompatActivity {
         protected void onStart() {
             super.onStart();
 
-            new WSPlatesListSupport(licensePlate, this.context).execute(globalstate.getSessionId());
+            new PlatesListSupportTask(licensePlate, this.context).execute(globalstate.getSessionId());
 }
     }
