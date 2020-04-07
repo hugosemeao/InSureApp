@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.R;
@@ -36,7 +37,9 @@ public class LoginActivity extends AppCompatActivity {
                 password = pass.getText().toString();
                 Log.d(TAG, "user: "+ username + "  password: " + password);
                 GlobalState globalState = (GlobalState) getApplicationContext();
+                
                 new LoginCallTask(context, globalState).execute(username, password);
+
             }
         });
     }
