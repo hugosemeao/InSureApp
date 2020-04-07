@@ -18,6 +18,7 @@ import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
 public class GlobalState extends Application {
          private Customer customer;
          private int _sessionId = -1;
+         private Context loginContext;
 
 
     public void setCustomer(Customer newCustomer) {
@@ -120,5 +121,11 @@ public class GlobalState extends Application {
             Log.d("DESTROY_CACHE_FILE", filename + " does not exist");
         }
     }
+
+    public void setLoginContext(Context context){
+        this.loginContext=context;
+    }
+
+    public Context getLoginContext() {return this.loginContext;}
 
 }

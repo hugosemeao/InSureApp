@@ -102,5 +102,5 @@ public class CreateClaimActivity extends AppCompatActivity {
             super.onStart();
 
             new WSPlatesListSupport(licensePlate, this.context).execute(globalstate.getSessionId());
-        }
+}
     }

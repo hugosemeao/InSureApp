@@ -39,10 +39,10 @@ public class WSGetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
             //customer.setPlateList(WSHelper.listPlates(sessionId));
 
         } catch (Exception e) {
+            Log.d(TAG, e.getMessage());
+        }
+        if (customer==null){
 
-            customer = _gs.getCustomer();
-
-            Log.d(TAG, "Customer obtained from cache - globalState");
         }
         return customer;
     }
@@ -77,9 +77,6 @@ public class WSGetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
                 birth_date.setText(customer.getDateOfBirth());
                 nif.setText(nifString);
             }
-
-            _gs.setCustomer(customer);
-            _gs.writeCustomerInCache(customer);
         }
 
     }
