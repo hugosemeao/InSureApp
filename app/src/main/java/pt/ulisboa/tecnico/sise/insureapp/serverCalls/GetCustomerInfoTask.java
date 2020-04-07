@@ -8,6 +8,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
+import pt.ulisboa.tecnico.sise.insureapp.JsonCodec;
+import pt.ulisboa.tecnico.sise.insureapp.JsonFileManager;
 import pt.ulisboa.tecnico.sise.insureapp.R;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
 import pt.ulisboa.tecnico.sise.insureapp.serverCalls.WSHelper;
@@ -20,9 +22,11 @@ public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
     private TextView birth_date;
     private TextView address;
     private TextView nif;
+    private GlobalState globalState;
 
-    public GetCustomerInfoTask(Activity activity) {
+    public GetCustomerInfoTask(Activity activity, Context context) {
         _activityContext = activity;
+        this.globalState=(GlobalState) context.getApplicationContext();
     }
 
     @Override
@@ -34,15 +38,20 @@ public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
         } catch (Exception e) {
             Log.d(TAG, e.getMessage());
         }
+        if (customer==null){
+            //checking customer json
+            String customerInfoJSON = JsonFileManager.jsonReadFromFile(globalState,"customer.json");
+            Log.d(TAG,"File read");
+            //Decoding JSON and assign to claimItemList
+            customer= JsonCodec.decodeCustomerInfo(customerInfoJSON);
+            Log.d(TAG,"File decoded!");
+        }
         return customer;
     }
 
     @Override
     protected void onPostExecute(Customer customer) {
-
-
-            Log.d(TAG, "Get customer info result => " + customer.toString());
-
+            Log.d(TAG, "Get customer info result: " + customer.toString());
             if (_activityContext != null) {
                 customer_name = (TextView) _activityContext.findViewById(R.id.name);
                 policy_id = (TextView) _activityContext.findViewById(R.id.policyNuber);
@@ -56,10 +65,21 @@ public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
                 address.setText(customer.getAddress());
                 birth_date.setText(customer.getDateOfBirth());
                 nif.setText(nifString);
+                try {
+                    //Setting file name
+                    String customerFileName ="customer.json";
+                    //Converting information to json type string
+                    String customerJson = JsonCodec.encodeCustomerInfo(customer);
+                    Log.d(TAG,"File written!");
+                    //Writing information into a JSON file
+                    JsonFileManager.jsonWriteToFile(globalState,customerFileName,customerJson);
+                    Log.d(TAG,"File saved!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
-
         }
-
     }
 
 

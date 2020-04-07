@@ -23,7 +23,7 @@ public class CustomerInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_information);
         GlobalState gs = (GlobalState) getApplicationContext();
-        new GetCustomerInfoTask( _activity).execute(gs.getSessionId());
+        new GetCustomerInfoTask( _activity,this).execute(gs.getSessionId());
         backButton = findViewById(R.id.Back_button);
 
         //listeners for the back button
