@@ -16,16 +16,13 @@ public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
     public final static String TAG = "GetCustomerInfoTask";
 
     private Activity _activityContext;
-    private GlobalState _gs;
-
     private TextView customer_name;
     private TextView policy_id;
     private TextView birth_date;
     private TextView address;
     private TextView nif;
 
-    public GetCustomerInfoTask(Context globalState, Activity activity) {
-        _gs = (GlobalState)globalState;
+    public GetCustomerInfoTask(Activity activity) {
         _activityContext = activity;
     }
 
@@ -34,15 +31,9 @@ public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
         Customer customer = null;
         Integer sessionId = params[0];
         try {
-
             customer = WSHelper.getCustomerInfo(sessionId);
-            //customer.setPlateList(WSHelper.listPlates(sessionId));
-
         } catch (Exception e) {
-
-             //customer = _gs.getCustomer();
-
-            Log.d(TAG, "Customer obtained from cache - globalState");
+            Log.d(TAG, "Error");
         }
         return customer;
     }
@@ -50,15 +41,7 @@ public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
     @Override
     protected void onPostExecute(Customer customer) {
 
-        if (customer == null || customer.getName() == null || customer.getName().isEmpty()) {
-            Log.d(TAG, "Get customer info result => null");
-            String toastMsg = "Server Error and the Customer is not stored in cache\nPlease try again later.";
-            Toast.makeText(_gs.getApplicationContext(),
-                    toastMsg,
-                    Toast.LENGTH_LONG)
-                    .show();
 
-        } else {
             Log.d(TAG, "Get customer info result => " + customer.toString());
 
             if (_activityContext != null) {
@@ -67,10 +50,8 @@ public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
                 birth_date = (TextView) _activityContext.findViewById(R.id.dateBirth);
                 address = (TextView) _activityContext.findViewById(R.id.address);
                 nif = (TextView) _activityContext.findViewById(R.id.fiscalNum);
-
                 String nifString = (customer.getFiscalNumber() <= 0 ? "" : String.valueOf(customer.getFiscalNumber()));
                 String policyString = (customer.getPolicyNumber() <= 0 ? "" : String.valueOf(customer.getPolicyNumber()));
-
                 customer_name.setText(customer.getName());
                 policy_id.setText(policyString);
                 address.setText(customer.getAddress());
@@ -83,4 +64,3 @@ public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
     }
 
 
-}

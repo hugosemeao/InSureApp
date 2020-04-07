@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.R;
 import pt.ulisboa.tecnico.sise.insureapp.serverCalls.GetCustomerInfoTask;
@@ -23,6 +22,8 @@ public class CustomerInformationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_information);
+        GlobalState gs = (GlobalState) getApplicationContext();
+        new GetCustomerInfoTask( _activity).execute(gs.getSessionId());
 
         backButton = findViewById(R.id.Back_button);
 
@@ -35,14 +36,6 @@ public class CustomerInformationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        GlobalState gs = (GlobalState) getApplicationContext();
-        new GetCustomerInfoTask(gs, _activity).execute(gs.getSessionId());
     }
 }
 
