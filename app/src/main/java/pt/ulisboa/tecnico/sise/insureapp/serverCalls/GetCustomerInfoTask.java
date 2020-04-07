@@ -33,7 +33,7 @@ public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
         try {
             customer = WSHelper.getCustomerInfo(sessionId);
         } catch (Exception e) {
-            Log.d(TAG, "Error");
+            Log.d(TAG, e.getMessage());
         }
         return customer;
     }

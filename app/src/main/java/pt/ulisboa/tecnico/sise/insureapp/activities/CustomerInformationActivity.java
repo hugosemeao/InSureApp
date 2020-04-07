@@ -24,7 +24,6 @@ public class CustomerInformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_information);
         GlobalState gs = (GlobalState) getApplicationContext();
         new GetCustomerInfoTask( _activity).execute(gs.getSessionId());
-
         backButton = findViewById(R.id.Back_button);
 
         //listeners for the back button
