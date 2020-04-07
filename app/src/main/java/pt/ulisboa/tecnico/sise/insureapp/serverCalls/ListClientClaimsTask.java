@@ -34,19 +34,18 @@ public class ListClientClaimsTask extends AsyncTask<Integer,Void,List<ClaimItem>
     @Override
     protected List<ClaimItem> doInBackground(Integer... sessionId) {
         List<ClaimItem> claimItemList = new ArrayList<>();
-        List<ClaimItem> returnedClaimItemList;
         try {
-            returnedClaimItemList = WSHelper.listClaims(sessionId[0]);
-            if (returnedClaimItemList==null){
-                //checking customer json
-                String customerClaimItemListJson = JsonFileManager.jsonReadFromFile(listView.getContext(),"claimItemList.json");
-                //Decoding JSON and assign to claimItemList
-                claimItemList=JsonCodec.decodeClaimList(customerClaimItemListJson);
-            } else {
-                claimItemList=returnedClaimItemList;
-            }
+            claimItemList = WSHelper.listClaims(sessionId[0]);
         } catch (Exception e) {
             Log.d(TAG, e.toString());
+        }
+        if (claimItemList.isEmpty()){
+            //checking customer json
+            String customerClaimItemListJson = JsonFileManager.jsonReadFromFile(listView.getContext(),"claimItemList.json");
+            Log.d(TAG,"File read");
+            //Decoding JSON and assign to claimItemList
+            claimItemList=JsonCodec.decodeClaimList(customerClaimItemListJson);
+            Log.d(TAG,"File decoded!");
         }
         return claimItemList;
     }
@@ -61,21 +60,25 @@ public class ListClientClaimsTask extends AsyncTask<Integer,Void,List<ClaimItem>
             //Toast send where there iss a connection error with the serever
             Toast.makeText(context, "Sorry, a error occured.", Toast.LENGTH_LONG).show();
         } else {
+            try {
+                //Setting file name
+                String claimItemListFileName ="claimItemList.json";
+                //Converting information to json type string
+                String claimItemListJson = JsonCodec.encodeClaimList(claimItemList);
+                Log.d(TAG,"File written!");
+                //Writing information into a JSON file
+                JsonFileManager.jsonWriteToFile(listView.getContext(),claimItemListFileName,claimItemListJson);
+                Log.d(TAG,"File saved!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             if (listView != null) {
                 //Updating the listView
                 ArrayAdapter<ClaimItem> claimHistoryAdapter = new ClaimHistoryAdapter(context,
                         android.R.layout.simple_list_item_1, claimItemList);
                 listView.setAdapter(claimHistoryAdapter);
-/*                //Setting file name
-                String claimItemListFileName = globalState.getCustomer().getUsername()+ "claimItemList.json";
-                try {
-                    //Converting information to json type string
-                    String claimItemListJson = JsonCodec.encodeClaimList(claimItemList);
-                    //Writing information into a JSON file
-                    JsonFileManager.jsonWriteToFile(listView.getContext(),claimItemListFileName,claimItemListJson);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }*/
+
+
             }
         }
 

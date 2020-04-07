@@ -16,6 +16,7 @@ import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
 public class GlobalState extends Application {
          private Customer customer;
          private int _sessionId = -1;
+         private Context loginContext;
 
     public void setSessionId(int sessionId) {
             this._sessionId = sessionId;
@@ -33,5 +34,11 @@ public class GlobalState extends Application {
     }
 
 
+
+    public void setLoginContext(Context context){
+        this.loginContext=context;
+    }
+
+    public Context getLoginContext() {return this.loginContext;}
 
 }

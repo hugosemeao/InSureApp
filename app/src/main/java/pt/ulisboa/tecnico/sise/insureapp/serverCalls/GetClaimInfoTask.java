@@ -36,6 +36,10 @@ public class GetClaimInfoTask extends AsyncTask<Integer, Void, ClaimRecord> {
         } catch (Exception e) {
             Log.d(TAG,e.getMessage());
         }
+        if(claimRecord==null){
+
+
+        }
     return claimRecord;
     }
 
