@@ -9,10 +9,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import pt.ulisboa.tecnico.sise.autoinsure.datamodel.ClaimItem;
-import pt.ulisboa.tecnico.sise.autoinsure.datamodel.ClaimRecord;
-import pt.ulisboa.tecnico.sise.autoinsure.datamodel.Customer;
-import pt.ulisboa.tecnico.sise.autoinsure.datamodel.Person;
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimRecord;
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.Person;
 
 public class JsonCodec {
 
