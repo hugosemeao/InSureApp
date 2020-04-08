@@ -10,9 +10,8 @@ import android.widget.Toast;
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.JsonCodec;
 import pt.ulisboa.tecnico.sise.insureapp.JsonFileManager;
-import pt.ulisboa.tecnico.sise.insureapp.NewClaimInfo;
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.NewClaimInfo;
 import pt.ulisboa.tecnico.sise.insureapp.activities.MainMenuActivity;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
 
 public class SubmitNewClaimTask extends AsyncTask<String, Void, Boolean> {
     public final static String TAG = "SubmitNewClaimTask";

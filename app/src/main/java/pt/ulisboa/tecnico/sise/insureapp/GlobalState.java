@@ -5,9 +5,8 @@ import android.app.Application;
 import java.util.ArrayList;
 import java.util.List;
 
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.NewClaimInfo;
 
 public class GlobalState extends Application {
     private static int _sessionId = -1;

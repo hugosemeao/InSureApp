@@ -1,28 +1,19 @@
 package pt.ulisboa.tecnico.sise.insureapp.serverCalls;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.provider.Settings;
 import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.File;
-import java.net.SocketTimeoutException;
-import java.util.ArrayList;
 import java.util.List;
 
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.JsonCodec;
 import pt.ulisboa.tecnico.sise.insureapp.JsonFileManager;
-import pt.ulisboa.tecnico.sise.insureapp.NewClaimInfo;
-import pt.ulisboa.tecnico.sise.insureapp.activities.LoginActivity;
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.NewClaimInfo;
 import pt.ulisboa.tecnico.sise.insureapp.activities.MainMenuActivity;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
 
 public class LoginCallTask extends AsyncTask<String, Integer, Integer> {

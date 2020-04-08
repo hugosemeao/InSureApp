@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.insureapp;
+package pt.ulisboa.tecnico.sise.insureapp.datamodel;
 
 public class NewClaimInfo {
     private final String claimTitle;

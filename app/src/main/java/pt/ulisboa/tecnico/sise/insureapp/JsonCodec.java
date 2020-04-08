@@ -12,10 +12,7 @@ import java.util.List;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.Person;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimRecord;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.NewClaimInfo;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.Person;
 
 public class JsonCodec {
