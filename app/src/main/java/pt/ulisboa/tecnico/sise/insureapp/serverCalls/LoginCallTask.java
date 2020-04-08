@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.net.SocketTimeoutException;
+import java.util.ArrayList;
 import java.util.List;
 
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
@@ -20,6 +21,8 @@ import pt.ulisboa.tecnico.sise.insureapp.JsonFileManager;
 import pt.ulisboa.tecnico.sise.insureapp.NewClaimInfo;
 import pt.ulisboa.tecnico.sise.insureapp.activities.LoginActivity;
 import pt.ulisboa.tecnico.sise.insureapp.activities.MainMenuActivity;
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
 
 public class LoginCallTask extends AsyncTask<String, Integer, Integer> {
@@ -85,10 +88,12 @@ public class LoginCallTask extends AsyncTask<String, Integer, Integer> {
 
     private void storeCustomerInfo(Integer sessionId){
             try {
-                Log.d(TAG, "here1");
                 Customer customer = WSHelper.getCustomerInfo(sessionId);
-                Log.d(TAG, "here");
+                Log.d(TAG, "Customer Info Acquired");
                 globalState.setCustomer(customer);
+                List<String> platesList= WSHelper.listPlates(sessionId);
+                Log.d(TAG, "Plate List Acquired");
+                globalState.setListPlates(platesList);
             } catch (Exception e) {
                 Log.d(TAG, e.getMessage());
             }

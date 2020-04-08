@@ -5,11 +5,14 @@ import android.app.Application;
 import java.util.ArrayList;
 import java.util.List;
 
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
 
 public class GlobalState extends Application {
     private static int _sessionId = -1;
     private static List<NewClaimInfo> listOfflineClaims = new ArrayList<NewClaimInfo>();
+    private List<String> listPlates= new ArrayList<>();
     private Customer customer;
 
     public Customer getCustomer() {
@@ -34,6 +37,12 @@ public class GlobalState extends Application {
 
     public List<NewClaimInfo> getListOfflineClaims() {
         return listOfflineClaims;
+    }
+
+    public List<String> getListPlates() {return listPlates;}
+
+    public void setListPlates(List<String> listPlates) {
+        this.listPlates = listPlates;
     }
 
 }

@@ -31,6 +31,7 @@ public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
 
     @Override
     protected Customer doInBackground(Integer... params) {
+        //Does no need to be invoked in the background thread, but left here to prevent substantial alterations in the code
         Customer customer = globalState.getCustomer();
         Integer sessionId = params[0];
         if (customer==null){

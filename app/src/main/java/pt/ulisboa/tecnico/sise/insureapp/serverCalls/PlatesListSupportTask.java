@@ -25,11 +25,8 @@ public class PlatesListSupportTask extends AsyncTask<Integer, Void, List<String>
     protected List<String> doInBackground(Integer... params) {
         Integer sessionId = params[0];
         List<String> result = null;
-        try {
-            result = WSHelper.listPlates(sessionId);
-        } catch (Exception e) {
-            Log.d(TAG,e.getMessage());
-        }
+        //Does no need to be invoked in the background thread, but left here to prevent substantial alterations in the code
+        result=globalState.getListPlates();
         if (result==null){
             //checking customer json
             String customerClaimPlatesJson = JsonFileManager.jsonReadFromFile(globalState,"claimplates.json");
