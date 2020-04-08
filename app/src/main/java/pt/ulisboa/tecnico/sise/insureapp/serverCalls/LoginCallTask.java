@@ -109,7 +109,7 @@ public class LoginCallTask extends AsyncTask<String, Integer, Integer> {
                 new WSHelper().submitNewClaim(sessionID,claim.getClaimTitle(),claim.getClaimDate(),claim.getClaimDate(),claim.getClaimDescription());
             }
             //delete the file after submitting info
-            File[] filesInMemory = new File("/data/data/pt.ulisboa.tecnico.sise.insureapp").listFiles();
+            File[] filesInMemory = new File("/data/data/pt.ulisboa.tecnico.sise.insureapp/files").listFiles();
             for(File file : filesInMemory){
                 if(file.getName().equals(jsonFile)){
                     file.delete();
