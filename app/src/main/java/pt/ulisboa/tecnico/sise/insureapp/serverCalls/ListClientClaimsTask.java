@@ -60,7 +60,7 @@ public class ListClientClaimsTask extends AsyncTask<Integer,Void,List<ClaimItem>
         Log.d(TAG, "listClaimItems  " + claimItemList);
         if (claimItemList==null) {
             //Toast send when there are no claims registred to that user
-            Toast.makeText(context, "Sorry, a error occured.", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Sorry, a error occured. To use this, restart you app", Toast.LENGTH_LONG).show();
         } else if (claimItemList.isEmpty()) {
             //Toast send where there iss a connection error with the serever
             Toast.makeText(context, "You havn't registred claims yet", Toast.LENGTH_LONG).show();

@@ -69,7 +69,6 @@ public class LoginCallTask extends AsyncTask<String, Integer, Integer> {
         if(sessionID >= 1){
             //change activity procedure
             Intent intent = new Intent((Context) context, MainMenuActivity.class);
-            //TODO extra with the client name and stuff ?? intent.putExtra(InternalProtocol.READ_NOTE_INDEX, position);
             //switches to MainMenuActivity
             context.startActivity(intent);
         }else{

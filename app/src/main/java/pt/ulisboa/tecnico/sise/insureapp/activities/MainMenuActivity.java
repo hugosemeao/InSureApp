@@ -24,6 +24,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private Button newClaimButton;
     private Button customerInformationButton;
     private Button logOutButton;
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 Log.d(TAG, "logOutButton clicked");
                 GlobalState globalState = (GlobalState) getApplicationContext();
                 //LogsOut from the server
-                new LogOutCallTask(getApplicationContext(), globalState).execute();
+                new LogOutCallTask(context, globalState).execute();
             }
         });
 

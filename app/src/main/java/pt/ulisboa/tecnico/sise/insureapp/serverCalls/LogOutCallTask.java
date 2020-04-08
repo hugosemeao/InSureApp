@@ -1,9 +1,11 @@
 package pt.ulisboa.tecnico.sise.insureapp.serverCalls;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import java.io.File;
@@ -19,7 +21,7 @@ public class LogOutCallTask extends AsyncTask<Void, Void,Boolean> {
 
     public LogOutCallTask(Context context, GlobalState globalState) {
         this.globalState = globalState;
-        this.context = context;
+        this.context = (Context) context;
     }
 
     @Override
@@ -54,7 +56,6 @@ public class LogOutCallTask extends AsyncTask<Void, Void,Boolean> {
             //switches to Login Activity
             Intent intent = new Intent(context, LoginActivity.class);
             context.startActivity(intent);
-
         }
     }
 }
