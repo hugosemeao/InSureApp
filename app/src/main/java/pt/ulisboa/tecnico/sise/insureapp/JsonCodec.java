@@ -91,6 +91,7 @@ public class JsonCodec {
         return jsonClaim.toString();
     }
 
+    //----------------------------------------------------------------------------------------------
     //similar to encodeClaimMethod but for a file that has not been submitted yet
     public static String encodeNewClaimInfo(NewClaimInfo newClaim) throws Exception {
         if (newClaim == null) return "";
@@ -102,6 +103,42 @@ public class JsonCodec {
         Log.i(TAG, "encodeNewClaim:" + jsonClaim.toString());
         return jsonClaim.toString();
     }
+
+    public static String encodeOfflineClaimList(List<NewClaimInfo> claimItemList) throws Exception {
+        if (claimItemList == null) return "";
+        JSONArray jsonClaimList = new JSONArray();
+        for (int i = 0; i < claimItemList.size(); i++) {
+            NewClaimInfo c = claimItemList.get(i);
+            JSONObject jsonClaim = new JSONObject();
+            jsonClaim.put("claimTitle", c.getClaimTitle());
+            jsonClaim.put("plate", c.getClaimPlateInformation());
+            jsonClaim.put("occurrenceDate",c.getClaimDate());
+            jsonClaim.put("description", c.getClaimDescription());
+            jsonClaimList.put(jsonClaim);
+        }
+        Log.i(TAG, "encodeClaimList:" + jsonClaimList.toString());
+        return jsonClaimList.toString();
+    }
+
+    public static List<NewClaimInfo> decodeOfflineClaimList(String jsonResult) throws JSONException {
+        ArrayList<NewClaimInfo> claimList = null;
+        Log.i(TAG, "decodeClaimList:" + jsonResult);
+            JSONArray jsonArray = new JSONArray(jsonResult);
+            claimList = new ArrayList<>();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String claimTitle = jsonObject.optString("claimTitle");
+                String claimPlate = jsonObject.optString("plate");
+                String claimDate = jsonObject.optString("occurrenceDate");
+                String claimDescription = jsonObject.optString("description");
+                claimList.add(new NewClaimInfo(claimTitle, claimPlate, claimDate, claimDescription));
+
+        }
+        return claimList;
+    }
+
+
+    //----------------------------------------------------------------------------------------------
 
     public static List<String> decodePlateList(String jsonResult) {
         ArrayList<String> plateList = null;

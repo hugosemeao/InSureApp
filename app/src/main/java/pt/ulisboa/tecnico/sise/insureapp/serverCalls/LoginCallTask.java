@@ -10,11 +10,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.File;
 import java.net.SocketTimeoutException;
+import java.util.List;
 
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
+import pt.ulisboa.tecnico.sise.insureapp.JsonCodec;
+import pt.ulisboa.tecnico.sise.insureapp.JsonFileManager;
+import pt.ulisboa.tecnico.sise.insureapp.NewClaimInfo;
 import pt.ulisboa.tecnico.sise.insureapp.activities.LoginActivity;
 import pt.ulisboa.tecnico.sise.insureapp.activities.MainMenuActivity;
+import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
 
 public class LoginCallTask extends AsyncTask<String, Integer, Integer> {
     public final static String TAG = "LoginCallTask";
@@ -40,6 +46,14 @@ public class LoginCallTask extends AsyncTask<String, Integer, Integer> {
             //returns session that is always >= 1
             sessionId = WSHelper.login(username, password);// exists and password
             Log.d(TAG, "Login result => " + sessionId + " "+ params[0] + "," + params[1]);
+
+            if(sessionId >= 1){
+                //store customer info/object in global state if there is a valid sessionID
+                storeCustomerInfo(sessionId);
+                //upload previous sessions offline claim
+                uploadPreviousSessionOfflineClaims(sessionId);
+            }
+
             return sessionId;
         } catch (Exception e) {
             Log.d(TAG, e.toString());
@@ -59,6 +73,7 @@ public class LoginCallTask extends AsyncTask<String, Integer, Integer> {
         this.globalState.setSessionId(sessionID);
         //sessioID < 1 is invalid credetials
         if(sessionID >= 1){
+            //change activity procedure
             Intent intent = new Intent((Context) context, MainMenuActivity.class);
             //TODO extra with the client name and stuff ?? intent.putExtra(InternalProtocol.READ_NOTE_INDEX, position);
             //switches to MainMenuActivity
@@ -66,5 +81,39 @@ public class LoginCallTask extends AsyncTask<String, Integer, Integer> {
         }else{
             Toast.makeText(context,"Invalid Credentials",Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void storeCustomerInfo(Integer sessionId){
+            try {
+                Log.d(TAG, "here1");
+                Customer customer = WSHelper.getCustomerInfo(sessionId);
+                Log.d(TAG, "here");
+                globalState.setCustomer(customer);
+            } catch (Exception e) {
+                Log.d(TAG, e.getMessage());
+            }
+    }
+
+    private void uploadPreviousSessionOfflineClaims(Integer sessionID){
+
+        try{
+            //this will throw exception if user did not upload any offline claims previously
+            String jsonFile = JsonFileManager.jsonReadFromFile(context,"offlineClaim" +globalState.getCustomer().getPolicyNumber()+ ".json");
+            List<NewClaimInfo> listOfCLaims = JsonCodec.decodeOfflineClaimList(jsonFile);
+            for(NewClaimInfo claim : listOfCLaims){
+                new WSHelper().submitNewClaim(sessionID,claim.getClaimTitle(),claim.getClaimDate(),claim.getClaimDate(),claim.getClaimDescription());
+            }
+            //delete the file after submitting info
+            File[] filesInMemory = new File("/data/data/pt.ulisboa.tecnico.sise.insureapp").listFiles();
+            for(File file : filesInMemory){
+                if(file.getName().equals(jsonFile)){
+                    file.delete();
+                }
+            }
+
+        }catch(Exception e){
+            Log.d(TAG, e.getMessage());
+        }
+
     }
 }

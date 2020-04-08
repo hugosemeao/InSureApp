@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toolbar;
 
+import java.io.File;
+
 import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.R;
 import pt.ulisboa.tecnico.sise.insureapp.serverCalls.LoginCallTask;
@@ -71,6 +73,14 @@ public class MainMenuActivity extends AppCompatActivity {
                 //resets globalState's sessionID to an ivalid one, i.e -1
                 GlobalState globalState = (GlobalState) getApplicationContext();
                 globalState.resetSessionId();
+                //delete all files except offlineClaim ones
+                File[] filesInMemory = new File("/data/data/pt.ulisboa.tecnico.sise.insureapp/files").listFiles();
+                for(File file : filesInMemory){
+                    Log.d("test",file.getName());
+                    if(!file.getName().startsWith("offlineClaim")){
+                        file.delete();
+                    }
+                }
                 //switches to CustomerInformationActivity
                 Intent intent = new Intent(MainMenuActivity.this, LoginActivity.class);
                 startActivity(intent);

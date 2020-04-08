@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import pt.ulisboa.tecnico.sise.insureapp.GlobalState;
 import pt.ulisboa.tecnico.sise.insureapp.JsonCodec;
 import pt.ulisboa.tecnico.sise.insureapp.JsonFileManager;
 import pt.ulisboa.tecnico.sise.insureapp.NewClaimInfo;
@@ -16,25 +17,20 @@ import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
 public class SubmitNewClaimTask extends AsyncTask<String, Void, Boolean> {
     public final static String TAG = "SubmitNewClaimTask";
     private Context _context;
+    private GlobalState globalState;
     private Integer _sessionId;
     private Boolean exception = false;
-    private static NewClaimInfo claimToBePutInFile = null;
-    private static int offlineClaimCounter = 1;
 
-    public SubmitNewClaimTask(Context context, Integer sessionId) {
+    public SubmitNewClaimTask(Context context, GlobalState globalState) {
         this._context = context;
-        this._sessionId = sessionId;
+        this._sessionId = globalState.getSessionId();
+        this.globalState = globalState;
     }
 
     @Override
     protected Boolean doInBackground(String... params) {
         try {
             Log.d(TAG,"Claim Details: " + params[0] + ", " + params[1] + ", " + params[2]);
-            //store the claim in case connection to server fails
-            claimToBePutInFile = new NewClaimInfo(params[0], params[1], params[2], params[3]);
-            Log.d(TAG,"Claim Details: " + claimToBePutInFile.getClaimTitle() + ", " +
-                    claimToBePutInFile.getClaimDate() + ", " + claimToBePutInFile.getClaimPlateInformation()
-                    + ", " + claimToBePutInFile.getClaimDescription());
             //WS helper will receive the parameters to include them on a specific session ID
             boolean r = WSHelper.submitNewClaim(_sessionId, params[0], params[1], params[2], params[3]);
             Log.d(TAG, "Submit new claim result => " + r);
@@ -43,6 +39,13 @@ public class SubmitNewClaimTask extends AsyncTask<String, Void, Boolean> {
         } catch (Exception e) {
             Log.d(TAG, e.toString());
             exception = true;
+
+            //store the claim in case connection to server fails
+            NewClaimInfo claimToBePutInFile = new NewClaimInfo(params[0], params[1], params[2], params[3]);
+            Log.d(TAG,"Claim Details: " + claimToBePutInFile.getClaimTitle() + ", " +
+                    claimToBePutInFile.getClaimDate() + ", " + claimToBePutInFile.getClaimPlateInformation()
+                    + ", " + claimToBePutInFile.getClaimDescription());
+            globalState.getListOfflineClaims().add(claimToBePutInFile);
         }
         return false;
     }
@@ -56,12 +59,12 @@ public class SubmitNewClaimTask extends AsyncTask<String, Void, Boolean> {
         } else if (exception) {
             //to put information in file
             //Setting file name. Each new claim will have different name thanks to counter
-            String offlineClaimsFileName ="offlineClaim" + getAndIncrementOfflineCLaimCounter() + ".json";
+            String offlineClaimsFileName ="offlineClaim" +globalState.getCustomer().getPolicyNumber()+ ".json";
             //Converting information to json type string
             String claimJson;
             try {
                 //mandatory try-catch
-                claimJson = JsonCodec.encodeNewClaimInfo(claimToBePutInFile);
+                claimJson = JsonCodec.encodeOfflineClaimList(globalState.getListOfflineClaims());
                 Log.d(TAG,"information into String format is DONE");
                 //Writing information into a JSON file
                 JsonFileManager.jsonWriteToFile(_context,offlineClaimsFileName,claimJson);
@@ -86,10 +89,6 @@ public class SubmitNewClaimTask extends AsyncTask<String, Void, Boolean> {
         Intent intent = new Intent(_context, MainMenuActivity.class);
         _context.startActivity(intent);
         ((Activity)_context).finish();
-    }
-
-    private int getAndIncrementOfflineCLaimCounter(){
-        return offlineClaimCounter++;
     }
 
 }

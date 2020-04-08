@@ -75,7 +75,7 @@ public class CreateClaimActivity extends AppCompatActivity {
                 String ClaimDescription = description.getText().toString();
 
                 if (!ClaimDate.isEmpty() && !ClaimDescription.isEmpty() && !ClaimPlateInformation.isEmpty() && !ClaimTitle.isEmpty()) {
-                    new SubmitNewClaimTask(context, globalstate.getSessionId()).execute(ClaimTitle, ClaimDate, ClaimPlateInformation, ClaimDescription);
+                    new SubmitNewClaimTask(context, globalstate).execute(ClaimTitle, ClaimDate, ClaimPlateInformation, ClaimDescription);
 
                 } else {
                     Toast.makeText(context,

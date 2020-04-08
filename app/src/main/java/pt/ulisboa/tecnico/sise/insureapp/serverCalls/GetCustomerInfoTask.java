@@ -31,13 +31,8 @@ public class GetCustomerInfoTask extends AsyncTask<Integer, Void, Customer> {
 
     @Override
     protected Customer doInBackground(Integer... params) {
-        Customer customer = null;
+        Customer customer = globalState.getCustomer();
         Integer sessionId = params[0];
-        try {
-            customer = WSHelper.getCustomerInfo(sessionId);
-        } catch (Exception e) {
-            Log.d(TAG, e.getMessage());
-        }
         if (customer==null){
             //checking customer json
             String customerInfoJSON = JsonFileManager.jsonReadFromFile(globalState,"customer.json");
