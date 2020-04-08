@@ -39,13 +39,18 @@ public class ListClientClaimsTask extends AsyncTask<Integer,Void,List<ClaimItem>
         } catch (Exception e) {
             Log.d(TAG, e.toString());
         }
-        if (claimItemList.isEmpty()){
-            //checking customer json
-            String customerClaimItemListJson = JsonFileManager.jsonReadFromFile(listView.getContext(),"claimItemList.json");
-            Log.d(TAG,"File read");
-            //Decoding JSON and assign to claimItemList
-            claimItemList=JsonCodec.decodeClaimList(customerClaimItemListJson);
-            Log.d(TAG,"File decoded!");
+        try {
+            if (claimItemList.isEmpty()) {
+                //checking customer json
+                String customerClaimItemListJson = JsonFileManager.jsonReadFromFile(listView.getContext(), "claimItemList.json");
+                Log.d(TAG, "File read");
+                //Decoding JSON and assign to claimItemList
+                claimItemList = JsonCodec.decodeClaimList(customerClaimItemListJson);
+                Log.d(TAG, "File decoded!");
+            }
+        }catch (Exception e){
+            Log.d(TAG,e.getMessage());
+            return null;
         }
         return claimItemList;
     }
@@ -53,12 +58,12 @@ public class ListClientClaimsTask extends AsyncTask<Integer,Void,List<ClaimItem>
     @Override
     protected void onPostExecute(List<ClaimItem> claimItemList) {
         Log.d(TAG, "listClaimItems  " + claimItemList);
-        if (claimItemList.isEmpty()) {
+        if (claimItemList==null) {
             //Toast send when there are no claims registred to that user
-            Toast.makeText(context, "You havn't registred claims yet", Toast.LENGTH_LONG).show();
-        } else if (claimItemList == null) {
-            //Toast send where there iss a connection error with the serever
             Toast.makeText(context, "Sorry, a error occured.", Toast.LENGTH_LONG).show();
+        } else if (claimItemList.isEmpty()) {
+            //Toast send where there iss a connection error with the serever
+            Toast.makeText(context, "You havn't registred claims yet", Toast.LENGTH_LONG).show();
         } else {
             try {
                 //Setting file name
