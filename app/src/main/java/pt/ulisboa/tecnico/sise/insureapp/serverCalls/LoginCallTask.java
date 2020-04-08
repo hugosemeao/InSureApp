@@ -93,7 +93,8 @@ public class LoginCallTask extends AsyncTask<String, Integer, Integer> {
 
         try{
             //this will throw exception if user did not upload any offline claims previously
-            String jsonFile = JsonFileManager.jsonReadFromFile(context,"offlineClaim" +globalState.getCustomer().getPolicyNumber()+ ".json");
+            String fileName = "offlineClaim" +globalState.getCustomer().getPolicyNumber()+ ".json";
+            String jsonFile = JsonFileManager.jsonReadFromFile(context,fileName);
             List<NewClaimInfo> listOfCLaims = JsonCodec.decodeOfflineClaimList(jsonFile);
             for(NewClaimInfo claim : listOfCLaims){
                 new WSHelper().submitNewClaim(sessionID,claim.getClaimTitle(),claim.getClaimDate(),claim.getClaimDate(),claim.getClaimDescription());
@@ -101,7 +102,7 @@ public class LoginCallTask extends AsyncTask<String, Integer, Integer> {
             //delete the file after submitting info
             File[] filesInMemory = new File("/data/data/pt.ulisboa.tecnico.sise.insureapp/files").listFiles();
             for(File file : filesInMemory){
-                if(file.getName().equals(jsonFile)){
+                if(file.getName().equals(fileName)){
                     file.delete();
                 }
             }
